@@ -58,7 +58,7 @@ export class HierarchyPanel extends EditorPanel {
   private readonly handleDocKeydown: (e: KeyboardEvent) => void;
 
   constructor(private callbacks: HierarchyCallbacks) {
-    super("hierarchy", "Scene");
+    super("hierarchy", "장면");
 
     this.handleDocClick = (e: MouseEvent) => {
       if (!this.contextMenu.contains(e.target as Node)) {
@@ -107,7 +107,7 @@ export class HierarchyPanel extends EditorPanel {
     titleWrap.style.gap = "8px";
 
     const titleLabel = document.createElement("span");
-    titleLabel.textContent = "Scene";
+    titleLabel.textContent = "장면";
     titleWrap.appendChild(titleLabel);
 
     this.headerBadge = document.createElement("span");
@@ -342,7 +342,7 @@ export class HierarchyPanel extends EditorPanel {
     });
 
     /* eye icon */
-    const eyeBtn = this.createActionBtn(isVisible ? ICON_EYE_OPEN : ICON_EYE_CLOSED, "Toggle visibility", (e) => {
+    const eyeBtn = this.createActionBtn(isVisible ? ICON_EYE_OPEN : ICON_EYE_CLOSED, "표시 전환", (e) => {
       e.stopPropagation();
       this.callbacks.onToggleVisible(obj.id);
     });
@@ -350,7 +350,7 @@ export class HierarchyPanel extends EditorPanel {
     actions.appendChild(eyeBtn);
 
     /* lock icon */
-    const lockBtn = this.createActionBtn(isLocked ? ICON_LOCK : ICON_UNLOCK, "Toggle lock", (e) => {
+    const lockBtn = this.createActionBtn(isLocked ? ICON_LOCK : ICON_UNLOCK, "잠금 전환", (e) => {
       e.stopPropagation();
       this.callbacks.onToggleLock(obj.id);
     });
@@ -432,24 +432,24 @@ export class HierarchyPanel extends EditorPanel {
 
     const items: { label: string; action: () => void; disabled?: boolean }[] = [
       {
-        label: "Rename",
+        label: "이름 바꾸기",
         action: () => this.startInlineRename(obj),
       },
       {
-        label: "Duplicate",
+        label: "복제",
         action: () => this.callbacks.onDuplicate(obj.id),
       },
       {
-        label: "Delete",
+        label: "삭제",
         action: () => this.callbacks.onDelete(obj.id),
       },
       {
-        label: "Group Selected",
+        label: "선택 항목 그룹화",
         action: () => this.callbacks.onGroup(this.selectionId ? [this.selectionId] : []),
         disabled: !this.selectionId,
       },
       {
-        label: "Ungroup",
+        label: "그룹 해제",
         action: () => this.callbacks.onUngroup(obj.id),
         disabled: !obj.children || obj.children.length === 0,
       },
