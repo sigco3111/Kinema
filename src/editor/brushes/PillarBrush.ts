@@ -3,7 +3,7 @@ import { type BrushDefinition, type BrushParams, computeRectFootprint, MIN_BRUSH
 
 export const PillarBrush: BrushDefinition = {
   id: "pillar",
-  label: "Pillar",
+  label: "기둥",
   shortcut: "3",
   // Cylinder outline icon
   icon: "M6 4a6 3 0 0 1 12 0v16a6 3 0 0 1-12 0zM6 4a6 3 0 0 0 12 0",
