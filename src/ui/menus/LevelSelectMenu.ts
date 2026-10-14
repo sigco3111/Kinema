@@ -21,13 +21,13 @@ export class LevelSelectMenu {
     // Title
     const title = document.createElement("h1");
     title.className = "menu-title";
-    title.textContent = "Level Select";
+    title.textContent = "레벨 선택";
     this.root.appendChild(title);
 
     // Procedural Demo button (always first, primary style)
     const proceduralBtn = document.createElement("button");
     proceduralBtn.className = "menu-button";
-    proceduralBtn.textContent = "Procedural Demo";
+    proceduralBtn.textContent = "절차 생성 데모";
     proceduralBtn.addEventListener("click", () => this.options.onPlayProcedural());
     this.root.appendChild(proceduralBtn);
 
@@ -39,7 +39,7 @@ export class LevelSelectMenu {
     // Back button
     const backBtn = document.createElement("button");
     backBtn.className = "menu-button";
-    backBtn.textContent = "Back";
+    backBtn.textContent = "뒤로";
     backBtn.addEventListener("click", () => this.options.onBack());
     this.root.appendChild(backBtn);
   }
@@ -64,7 +64,7 @@ export class LevelSelectMenu {
     if (levels.length === 0) {
       const empty = document.createElement("div");
       empty.className = "menu-level-empty";
-      empty.textContent = "No saved levels yet. Choose Create Level from the main menu to make one.";
+      empty.textContent = "저장한 레벨이 없습니다. 메인 메뉴에서 레벨 만들기를 선택하세요.";
       this.listContainer.appendChild(empty);
       return;
     }
@@ -101,18 +101,18 @@ export class LevelSelectMenu {
 
     const playBtn = document.createElement("button");
     playBtn.className = "menu-button-small";
-    playBtn.textContent = "Play";
+    playBtn.textContent = "플레이";
     playBtn.addEventListener("click", () => this.options.onSelectLevel(meta.key));
     actions.appendChild(playBtn);
 
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "menu-button-small menu-button-danger";
-    deleteBtn.textContent = "Delete";
+    deleteBtn.textContent = "삭제";
     deleteBtn.addEventListener("click", () => {
-      if (deleteBtn.textContent === "Delete") {
-        deleteBtn.textContent = "Confirm?";
+      if (deleteBtn.textContent === "삭제") {
+        deleteBtn.textContent = "삭제할까요?";
         const timer = setTimeout(() => {
-          deleteBtn.textContent = "Delete";
+          deleteBtn.textContent = "삭제";
         }, 3000);
         deleteBtn.dataset.timer = timer.toString();
       } else {
