@@ -3,7 +3,7 @@ import { type BrushDefinition, type BrushParams, computeRectFootprint, MIN_BRUSH
 
 export const TriggerBrush: BrushDefinition = {
   id: "trigger",
-  label: "Trigger",
+  label: "트리거",
   shortcut: "8",
   // Dashed box icon — trigger zone
   icon: "M4 4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M4 8v4M20 8v4",
