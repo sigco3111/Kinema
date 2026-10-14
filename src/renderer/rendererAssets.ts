@@ -50,7 +50,7 @@ export class RendererAssetLibrary {
     }
 
     try {
-      const url = `/assets/postfx/${preset.file}`;
+      const url = `/Kinema/public/assets/postfx/${preset.file}`;
       const texture = await this.loadLutByFormat(url, preset.format);
       if (!texture) return null;
       texture.needsUpdate = true;
@@ -88,7 +88,7 @@ export class RendererAssetLibrary {
     if (!preset?.file) return null;
 
     try {
-      const url = `/assets/env/${preset.file}`;
+      const url = `/Kinema/public/assets/env/${preset.file}`;
       const hdrTexture = await this.hdrLoader.loadAsync(url);
       const envTarget = this.pmrem.fromEquirectangular(hdrTexture);
       hdrTexture.dispose();
