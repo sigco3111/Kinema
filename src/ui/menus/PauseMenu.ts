@@ -15,14 +15,14 @@ export class PauseMenu {
 
     const title = document.createElement("h1");
     title.className = "menu-title";
-    title.textContent = "Paused";
+    title.textContent = "일시 정지";
     this.root.appendChild(title);
 
-    const resumeBtn = this.createButton("Resume", this.options.onResume);
+    const resumeBtn = this.createButton("계속하기", this.options.onResume);
     resumeBtn.classList.add("menu-button-primary");
-    const settingsBtn = this.createButton("Settings", this.options.onSettings);
-    const helpBtn = this.createButton("Help", this.options.onHelp);
-    const mainMenuBtn = this.createButton("Main Menu", this.options.onMainMenu);
+    const settingsBtn = this.createButton("설정", this.options.onSettings);
+    const helpBtn = this.createButton("도움말", this.options.onHelp);
+    const mainMenuBtn = this.createButton("메인 메뉴", this.options.onMainMenu);
 
     this.root.appendChild(resumeBtn);
     this.root.appendChild(settingsBtn);
