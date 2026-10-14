@@ -5,7 +5,7 @@ const FLOOR_THICKNESS = 0.1;
 
 export const FloorBrush: BrushDefinition = {
   id: "floor",
-  label: "Floor",
+  label: "바닥",
   shortcut: "2",
   // Flat rectangle icon
   icon: "M2 16l10 4 10-4-10-4zM2 16v-2l10-4 10 4v2",
