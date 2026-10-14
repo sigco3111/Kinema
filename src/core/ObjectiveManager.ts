@@ -52,6 +52,6 @@ export class ObjectiveManager implements Disposable {
         return;
       }
     }
-    this.eventBus.emit("objective:set", { id: "none", text: "All objectives complete" });
+    this.eventBus.emit("objective:set", { id: "none", text: "모든 목표 달성" });
   }
 }
