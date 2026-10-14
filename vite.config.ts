@@ -1,3 +1,4 @@
+import { viteSingleFile } from 'vite-plugin-singlefile';
 import { defineConfig } from 'vitest/config';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,7 +14,8 @@ const rapierPkg = JSON.parse(readFileSync(resolve(rapierPkgDir, 'package.json'),
 const rapierESM = resolve(rapierPkgDir, rapierPkg.module ?? rapierPkg.main);
 
 export default defineConfig({
-  plugins: [],
+  base: '/Kinema/',
+  plugins: [viteSingleFile()],
   server: {
     strictPort: true,
   },
@@ -56,24 +58,6 @@ export default defineConfig({
     // by the post-processing pipeline — Rolldown keeps them as separate async
     // chunks automatically, so the negative lookahead in the vendor-three
     // regex excludes them from the vendor bundle.
-    rolldownOptions: {
-      output: {
-        codeSplitting: {
-          groups: [
-            {
-              name: 'vendor-three',
-              test: /node_modules[\\/]three[\\/](?!addons[\\/]tsl[\\/]display[\\/])/,
-              priority: 10,
-            },
-            {
-              name: 'vendor-rapier',
-              test: /node_modules[\\/]@dimforge[\\/]rapier3d-compat/,
-              priority: 10,
-            },
-          ],
-        },
-      },
-    },
     chunkSizeWarningLimit: 600,
   },
 });
