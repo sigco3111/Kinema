@@ -3,7 +3,7 @@ import { type BrushDefinition, type BrushParams, computeRectFootprint, MIN_BRUSH
 
 export const RampBrush: BrushDefinition = {
   id: "ramp",
-  label: "Ramp",
+  label: "경사로",
   shortcut: "5",
   // Wedge/ramp icon — triangle shape
   icon: "M2 20L22 20L2 4z",
