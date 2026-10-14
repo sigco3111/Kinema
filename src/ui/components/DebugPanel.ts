@@ -152,14 +152,14 @@ export class DebugPanel implements Disposable {
     parent.appendChild(this.panel);
 
     const title = document.createElement("div");
-    title.textContent = "Renderer & Debug";
+    title.textContent = "렌더러와 디버그";
     title.style.cssText = "font-size:13px;font-weight:600;letter-spacing:0.02em;margin-bottom:10px;color:#eef7ff;";
     this.panel.appendChild(title);
 
     this.graphWrap = document.createElement("div");
     this.graphWrap.style.cssText =
       "display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin-bottom:8px;";
-    this.graphWrap.textContent = "Graphs will load on first open.";
+    this.graphWrap.textContent = "처음 열 때 그래프를 불러옵니다.";
     this.panel.appendChild(this.graphWrap);
 
     this.metrics = document.createElement("div");
@@ -183,7 +183,7 @@ export class DebugPanel implements Disposable {
     this.metricSpeed = this.addMetricRow("Speed");
     this.metricFps = this.addMetricRow("FPS");
     this.metricFrame = this.addMetricRow("Frame");
-    this.metricPhysics = this.addMetricRow("Physics");
+    this.metricPhysics = this.addMetricRow("물리");
     this.metricDraw = this.addMetricRow("Draw Calls");
     this.metricTris = this.addMetricRow("Triangles");
 
@@ -315,7 +315,7 @@ export class DebugPanel implements Disposable {
     qualitySection.appendChild(
       this.createSelect(
         "graphics",
-        "Graphics",
+        "그래픽",
         ["performance", "balanced", "cinematic"],
         "cinematic",
         "Applies renderer quality presets.",
@@ -351,14 +351,14 @@ export class DebugPanel implements Disposable {
       ),
     );
     qualitySection.appendChild(
-      this.createCheckbox("shadows", "Shadows", true, "Enables or disables real-time shadow rendering.", (value) => {
+      this.createCheckbox("shadows", "그림자", true, "Enables or disables real-time shadow rendering.", (value) => {
         this.eventBus.emit("debug:shadows", value);
       }),
     );
     qualitySection.appendChild(
       this.createSelect(
         "shadowQuality",
-        "Shadow quality",
+        "그림자 품질",
         ["auto", "performance", "balanced", "cinematic"],
         "auto",
         "Auto follows graphics profile; manual values override per-profile shadow map size.",
@@ -450,7 +450,7 @@ export class DebugPanel implements Disposable {
       ),
     );
     postFxSection.appendChild(
-      this.createCheckbox("bloomEnabled", "Bloom", true, "Toggles bright highlight bloom.", (value) => {
+      this.createCheckbox("bloomEnabled", "빛 번짐", true, "Toggles bright highlight bloom.", (value) => {
         this.eventBus.emit("debug:bloomEnabled", value);
         this.updateVisibilityFromControls();
       }),
@@ -473,7 +473,7 @@ export class DebugPanel implements Disposable {
     postFxSection.appendChild(
       this.createCheckbox(
         "casEnabled",
-        "CAS sharpening",
+        "CAS 선명화",
         true,
         "Contrast-adaptive sharpening applied after anti-aliasing.",
         (value) => {
@@ -485,7 +485,7 @@ export class DebugPanel implements Disposable {
     postFxSection.appendChild(
       this.createRange(
         "casStrength",
-        "CAS strength",
+        "CAS 강도",
         0,
         1,
         0.01,
@@ -500,7 +500,7 @@ export class DebugPanel implements Disposable {
     postFxSection.appendChild(
       this.createCheckbox(
         "vignetteEnabled",
-        "Vignette",
+        "비네트",
         true,
         "Adds subtle edge darkening for depth focus.",
         (value) => {
@@ -724,7 +724,7 @@ export class DebugPanel implements Disposable {
   private async ensureStatsPanels(): Promise<void> {
     if (this.statsPanels.length > 0) return;
     if (this.statsLoading) return this.statsLoading;
-    this.graphWrap.textContent = "Loading graphs…";
+    this.graphWrap.textContent = "그래프 불러오는 중…";
     this.statsLoading = import("three/addons/libs/stats.module.js")
       .then((mod) => {
         const StatsCtor = (mod as unknown as { default: new () => any }).default;
@@ -738,7 +738,7 @@ export class DebugPanel implements Disposable {
         this.graphWrap.appendChild(mb.dom);
       })
       .catch((err) => {
-        this.graphWrap.textContent = "Graphs unavailable.";
+        this.graphWrap.textContent = "그래프를 불러올 수 없습니다.";
         console.warn("[DebugPanel] Failed to load stats graphs:", err);
       })
       .finally(() => {
