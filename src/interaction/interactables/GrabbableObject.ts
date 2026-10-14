@@ -9,7 +9,7 @@ const _grabOffset = new THREE.Vector3();
 
 export class GrabbableObject implements IInteractable {
   readonly id: string;
-  readonly label = "Grab";
+  readonly label = "잡기";
   readonly position = new THREE.Vector3();
 
   constructor(
