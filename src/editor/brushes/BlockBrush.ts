@@ -3,7 +3,7 @@ import { type BrushDefinition, type BrushParams, computeRectFootprint, MIN_BRUSH
 
 export const BlockBrush: BrushDefinition = {
   id: "block",
-  label: "Block",
+  label: "블록",
   shortcut: "1",
   // Simple cube outline icon
   icon: "M4 14l8 4.5 8-4.5M4 10l8 4.5 8-4.5M12 2l8 4.5v9L12 20l-8-4.5v-9z",
