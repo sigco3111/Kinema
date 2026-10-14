@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Kinema</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --app-width: 100vw;
+      --app-height: 100dvh;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: var(--app-width);
+      height: var(--app-height);
+      min-width: 100vw;
+      min-height: 100dvh;
+      overflow: hidden;
+      background: #000;
+      overscroll-behavior: none;
+    }
+    body { position: fixed; inset: 0; }
+    canvas {
+      display: block;
+      position: fixed;
+      inset: 0;
+      width: var(--app-width);
+      height: var(--app-height);
+    }
+    #ui-overlay {
+      position: fixed;
+      inset: 0;
+      width: var(--app-width);
+      height: var(--app-height);
+      pointer-events: none;
+      z-index: 10;
+    }
+    #ui-overlay * { pointer-events: auto; }
+  </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap"><style>body,button,input,select,textarea{font-family:"Noto Sans KR","Malgun Gothic",sans-serif!important}</style></head>
+<body>
+  <div id="ui-overlay"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
