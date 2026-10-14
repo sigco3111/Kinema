@@ -6,7 +6,7 @@ const FRAME_THICKNESS = 0.2;
 
 export const DoorFrameBrush: BrushDefinition = {
   id: "doorframe",
-  label: "Door Frame",
+  label: "문틀",
   shortcut: "6",
   // Door frame icon — rectangular opening with frame
   icon: "M4 2v20h3V6h10v16h3V2zM7 6h10v16H7z",
