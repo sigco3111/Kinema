@@ -44,7 +44,7 @@ export class HUD implements Disposable {
     holdKey.textContent = "F";
     const holdCaption = document.createElement("div");
     holdCaption.className = "hud-hold-caption";
-    holdCaption.textContent = "Hold";
+    holdCaption.textContent = "길게 누르기";
     this.holdFill.appendChild(holdKey);
     this.holdFill.appendChild(holdCaption);
     this.holdWrap.appendChild(this.holdFill);
@@ -59,7 +59,7 @@ export class HUD implements Disposable {
     this.objective.className = "hud-glass-card hud-objective-card";
     const objectiveEyebrow = document.createElement("div");
     objectiveEyebrow.className = "hud-card-eyebrow";
-    objectiveEyebrow.textContent = "Objective";
+    objectiveEyebrow.textContent = "목표";
     this.objectiveText = document.createElement("div");
     this.objectiveText.className = "hud-objective-text";
     this.objective.appendChild(objectiveEyebrow);
