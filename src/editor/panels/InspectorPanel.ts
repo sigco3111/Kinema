@@ -76,7 +76,7 @@ export class InspectorPanel extends EditorPanel {
   private materialCollapsed = false;
 
   constructor(private callbacks: InspectorCallbacks) {
-    super("inspector", "Inspector");
+    super("inspector", "속성");
   }
 
   /* ================================================================ */
@@ -108,7 +108,7 @@ export class InspectorPanel extends EditorPanel {
     /* -- Header -- */
     const header = document.createElement("div");
     header.className = "ke-panel-header";
-    header.textContent = "Inspector";
+    header.textContent = "속성";
     el.appendChild(header);
 
     /* Enable drag-to-move via header */
@@ -126,13 +126,13 @@ export class InspectorPanel extends EditorPanel {
       color: "var(--ke-text-dim)",
       fontSize: "var(--ke-font-size)",
     });
-    this.placeholder.textContent = "No selection";
+    this.placeholder.textContent = "선택한 항목 없음";
     body.appendChild(this.placeholder);
 
     /* ---------- Transform section ---------- */
     this.transformSection = document.createElement("div");
 
-    const transformHeader = this.createSectionHeader("Transform", (collapsed) => {
+    const transformHeader = this.createSectionHeader("변형", (collapsed) => {
       this.transformCollapsed = collapsed;
       this.transformBody.style.display = collapsed ? "none" : "";
     });
@@ -141,9 +141,9 @@ export class InspectorPanel extends EditorPanel {
     this.transformBody = document.createElement("div");
     this.transformBody.className = "ke-inspector";
 
-    this.posInputs = this.createVectorRow(this.transformBody, "Position");
-    this.rotInputs = this.createVectorRow(this.transformBody, "Rotation");
-    this.scaleInputs = this.createVectorRow(this.transformBody, "Scale");
+    this.posInputs = this.createVectorRow(this.transformBody, "위치");
+    this.rotInputs = this.createVectorRow(this.transformBody, "회전");
+    this.scaleInputs = this.createVectorRow(this.transformBody, "크기");
 
     /* Physics type dropdown */
     const physicsRow = document.createElement("div");
@@ -151,7 +151,7 @@ export class InspectorPanel extends EditorPanel {
 
     const physicsLabel = document.createElement("span");
     physicsLabel.className = "ke-inspector-label";
-    physicsLabel.textContent = "Physics";
+    physicsLabel.textContent = "물리";
     physicsRow.appendChild(physicsLabel);
 
     const physicsValueWrap = document.createElement("div");
@@ -197,7 +197,7 @@ export class InspectorPanel extends EditorPanel {
     this.materialSection = document.createElement("div");
     Object.assign(this.materialSection.style, { marginTop: "4px" });
 
-    const materialHeader = this.createSectionHeader("Material", (collapsed) => {
+    const materialHeader = this.createSectionHeader("재질", (collapsed) => {
       this.materialCollapsed = collapsed;
       this.materialBody.style.display = collapsed ? "none" : "";
     });
@@ -212,24 +212,24 @@ export class InspectorPanel extends EditorPanel {
     this.colorHex = colorResult.hex;
 
     /* Roughness */
-    const roughResult = this.createSliderRow(this.materialBody, "Roughness", 0, 1, 0.01, 0.7);
+    const roughResult = this.createSliderRow(this.materialBody, "거칠기", 0, 1, 0.01, 0.7);
     this.roughnessSlider = roughResult.slider;
 
     /* Metalness */
-    const metalResult = this.createSliderRow(this.materialBody, "Metalness", 0, 1, 0.01, 0);
+    const metalResult = this.createSliderRow(this.materialBody, "금속성", 0, 1, 0.01, 0);
     this.metalnessSlider = metalResult.slider;
 
     /* Emissive */
-    const emissiveResult = this.createColorRow(this.materialBody, "Emissive", "#000000");
+    const emissiveResult = this.createColorRow(this.materialBody, "발광색", "#000000");
     this.emissiveInput = emissiveResult.input;
     this.emissiveHex = emissiveResult.hex;
 
     /* Emissive Intensity */
-    const intensityResult = this.createSliderRow(this.materialBody, "Intensity", 0, 5, 0.01, 0);
+    const intensityResult = this.createSliderRow(this.materialBody, "강도", 0, 5, 0.01, 0);
     this.emissiveIntensitySlider = intensityResult.slider;
 
     /* Opacity */
-    const opacityResult = this.createSliderRow(this.materialBody, "Opacity", 0, 1, 0.01, 1);
+    const opacityResult = this.createSliderRow(this.materialBody, "불투명도", 0, 1, 0.01, 1);
     this.opacitySlider = opacityResult.slider;
 
     /* Wire up material input callbacks */
