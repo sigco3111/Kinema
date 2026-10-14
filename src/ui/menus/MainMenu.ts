@@ -20,13 +20,13 @@ export class MainMenu {
     title.textContent = "Kinema";
     this.root.appendChild(title);
 
-    const playBtn = this.createButton("Play", this.options.onPlay);
+    const playBtn = this.createButton("플레이", this.options.onPlay);
     playBtn.classList.add("menu-button-primary");
-    const levelSelectBtn = this.createButton("Level Select", this.options.onLevelSelect);
-    const createLevelBtn = this.createButton("Create Level", this.options.onCreateLevel);
-    const settingsBtn = this.createButton("Settings", this.options.onSettings);
-    const helpBtn = this.createButton("Help", this.options.onHelp);
-    const quitBtn = this.createButton("Quit", this.options.onQuit);
+    const levelSelectBtn = this.createButton("레벨 선택", this.options.onLevelSelect);
+    const createLevelBtn = this.createButton("레벨 만들기", this.options.onCreateLevel);
+    const settingsBtn = this.createButton("설정", this.options.onSettings);
+    const helpBtn = this.createButton("도움말", this.options.onHelp);
+    const quitBtn = this.createButton("종료", this.options.onQuit);
 
     this.root.appendChild(playBtn);
     this.root.appendChild(levelSelectBtn);
