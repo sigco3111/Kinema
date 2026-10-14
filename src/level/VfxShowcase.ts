@@ -381,7 +381,7 @@ export async function createVfxShowcase(
       created.push(fireLight);
 
       // Smoke sprites (keep existing Kenney texture approach)
-      const smokeTexture = new THREE.TextureLoader().load("/assets/sprites/smoke_black.png");
+      const smokeTexture = new THREE.TextureLoader().load("/Kinema/public/assets/sprites/smoke_black.png");
       const SMOKE_COUNT = 10;
       const smokeMinY = 3.0;
       const smokeMaxY = 8.0;
@@ -452,7 +452,7 @@ export async function createVfxShowcase(
       const loader = new GLTFLoader();
       try {
         const gltf = await new Promise<{ scene: THREE.Group }>((resolve, reject) => {
-          loader.load("assets/models/cloud_lightning.glb", resolve as (gltf: unknown) => void, undefined, reject);
+          loader.load("public/assets/models/cloud_lightning.glb", resolve as (gltf: unknown) => void, undefined, reject);
         });
         const model = gltf.scene;
         const posX = base.x + 5;
