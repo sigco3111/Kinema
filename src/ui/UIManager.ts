@@ -46,7 +46,7 @@ export class UIManager implements Disposable {
     this.loadingScreen = new LoadingScreen();
     this.deathEffect = new DeathEffect(this.eventBus);
 
-    // "Click to start" hint for audio activation
+    // "클릭하여 시작" hint for audio activation
     this.createInteractionHint();
     this.createOrientationHint();
 
@@ -183,7 +183,7 @@ export class UIManager implements Disposable {
 
     this.hintEl = document.createElement("div");
     const hint = this.hintEl;
-    hint.textContent = "Click to start";
+    hint.textContent = "클릭하여 시작";
     hint.className = "kinema-ui-hint";
 
     document.body.appendChild(hint);
@@ -204,7 +204,7 @@ export class UIManager implements Disposable {
     this.orientationHintEl = document.createElement("div");
     const hint = this.orientationHintEl;
     hint.className = "kinema-orientation-hint";
-    hint.textContent = "Rotate to landscape for the best view";
+    hint.textContent = "가로 화면으로 돌려주세요";
     Object.assign(hint.style, {
       position: "fixed",
       left: "50%",
