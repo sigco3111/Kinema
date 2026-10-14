@@ -6,7 +6,7 @@ const DEFAULT_STEP_COUNT = 8;
 
 export const StairsBrush: BrushDefinition = {
   id: "stairs",
-  label: "Stairs",
+  label: "계단",
   shortcut: "4",
   // Staircase icon — ascending steps
   icon: "M2 20h4v-4h4v-4h4v-4h4v-4h2v20H2z",
