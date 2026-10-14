@@ -30,7 +30,7 @@ export class ToolbarPanel extends EditorPanel {
   private gridBtn!: HTMLButtonElement;
 
   constructor(private callbacks: ToolbarCallbacks) {
-    super("toolbar", "Toolbar");
+    super("toolbar", "도구 모음");
   }
 
   build(): void {
@@ -47,8 +47,8 @@ export class ToolbarPanel extends EditorPanel {
     // ── Left section: File operations ──
     const leftGroup = this.createGroup();
     leftGroup.appendChild(this.createIconBtn(ICON_SAVE, "Save (Ctrl+S)", this.callbacks.onSave));
-    leftGroup.appendChild(this.createIconBtn(ICON_FOLDER, "Load", this.callbacks.onLoad));
-    leftGroup.appendChild(this.createIconBtn(ICON_IMPORT, "Import GLB", this.callbacks.onImportGLB));
+    leftGroup.appendChild(this.createIconBtn(ICON_FOLDER, "불러오기", this.callbacks.onLoad));
+    leftGroup.appendChild(this.createIconBtn(ICON_IMPORT, "GLB 가져오기", this.callbacks.onImportGLB));
     leftGroup.appendChild(this.createSep());
     leftGroup.appendChild(this.createIconBtn(ICON_UNDO, "Undo (Ctrl+Z)", this.callbacks.onUndo));
     leftGroup.appendChild(this.createIconBtn(ICON_REDO, "Redo (Ctrl+Y)", this.callbacks.onRedo));
@@ -62,7 +62,7 @@ export class ToolbarPanel extends EditorPanel {
 
     const playBtn = document.createElement("button");
     playBtn.className = "ke-btn ke-btn-play";
-    playBtn.title = "Play Test (Ctrl+P)";
+    playBtn.title = "플레이 테스트 (Ctrl+P)";
     // Build a filled play triangle SVG directly (not using svgIcon which sets stroke)
     const playSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     playSvg.setAttribute("width", "14");
@@ -75,7 +75,7 @@ export class ToolbarPanel extends EditorPanel {
     playSvg.appendChild(playPath);
     playBtn.appendChild(playSvg);
     const playLabel = document.createElement("span");
-    playLabel.textContent = "Play";
+    playLabel.textContent = "플레이";
     playLabel.style.fontSize = "12px";
     playLabel.style.fontWeight = "600";
     playBtn.appendChild(playLabel);
@@ -89,16 +89,16 @@ export class ToolbarPanel extends EditorPanel {
     // ── Right section: Snap/Grid toggles + Transform modes ──
     const rightGroup = this.createGroup();
 
-    this.snapBtn = this.createIconBtn(ICON_SNAP, "Toggle Snap", this.callbacks.onToggleSnap);
-    this.gridBtn = this.createIconBtn(ICON_GRID, "Toggle Grid", this.callbacks.onToggleGrid);
+    this.snapBtn = this.createIconBtn(ICON_SNAP, "스냅 전환", this.callbacks.onToggleSnap);
+    this.gridBtn = this.createIconBtn(ICON_GRID, "격자 전환", this.callbacks.onToggleGrid);
     rightGroup.appendChild(this.snapBtn);
     rightGroup.appendChild(this.gridBtn);
     rightGroup.appendChild(this.createSep());
 
     const modes: { label: string; mode: TransformMode; shortcut: string }[] = [
-      { label: "W", mode: "translate", shortcut: "Move (W)" },
-      { label: "E", mode: "rotate", shortcut: "Rotate (E)" },
-      { label: "R", mode: "scale", shortcut: "Scale (R)" },
+      { label: "W", mode: "translate", shortcut: "이동 (W)" },
+      { label: "E", mode: "rotate", shortcut: "회전 (E)" },
+      { label: "R", mode: "scale", shortcut: "크기 (R)" },
     ];
 
     for (const { label, mode, shortcut } of modes) {
