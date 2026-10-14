@@ -205,7 +205,7 @@ export class InteractableSystem implements RuntimeSystem {
         const obj = this.throwableObjects.get(h1) ?? this.throwableObjects.get(h2);
         if (!obj) return;
         if (event.totalForceMagnitude() > 12) {
-          this.uiManager.hud.showStatus("Impact!", 700);
+          this.uiManager.hud.showStatus("충돌!", 700);
         }
       });
     }
