@@ -6,7 +6,7 @@ const CONE_HEIGHT = 0.8;
 
 export const SpawnBrush: BrushDefinition = {
   id: "spawn",
-  label: "Spawn",
+  label: "시작 지점",
   shortcut: "7",
   // Arrow pointing up — spawn marker icon
   icon: "M12 2l6 10h-4v8h-4v-8H6z",
