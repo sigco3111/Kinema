@@ -17,7 +17,7 @@ export class HelpMenu {
 
     const title = document.createElement("h1");
     title.className = "menu-title";
-    title.textContent = "Controls & Help";
+    title.textContent = "조작과 도움말";
     this.root.appendChild(title);
 
     const content = document.createElement("div");
@@ -25,37 +25,37 @@ export class HelpMenu {
     this.root.appendChild(content);
 
     const movement: KeyBinding[] = [
-      { key: "W A S D", description: "Move" },
-      { key: "↑ ↓ ← →", description: "Move (arrows)" },
-      { key: "Space", description: "Jump / Double Jump" },
-      { key: "C", description: "Crouch" },
-      { key: "Shift", description: "Sprint" },
-      { key: "W / S", description: "Climb (on ladder)" },
+      { key: "W A S D", description: "이동" },
+      { key: "↑ ↓ ← →", description: "이동 (방향키)" },
+      { key: "Space", description: "점프 / 이단 점프" },
+      { key: "C", description: "앉기" },
+      { key: "Shift", description: "달리기" },
+      { key: "W / S", description: "사다리 오르내리기" },
     ];
 
     const interaction: KeyBinding[] = [
-      { key: "F", description: "Interact / Grab" },
-      { key: "LMB", description: "Throw / Primary action" },
-      { key: "E", description: "Altitude Up" },
-      { key: "Q", description: "Altitude Down" },
+      { key: "F", description: "상호작용 / 잡기" },
+      { key: "LMB", description: "던지기 / 기본 동작" },
+      { key: "E", description: "고도 올리기" },
+      { key: "Q", description: "고도 내리기" },
     ];
 
     const cameraSystem: KeyBinding[] = [
-      { key: "Mouse", description: "Look around" },
-      { key: "Scroll", description: "Zoom camera" },
-      { key: "Escape", description: "Pause menu" },
-      { key: "`", description: "Debug panel" },
-      { key: "F1", description: "Level editor" },
-      { key: "F6", description: "Cycle graphics profile" },
+      { key: "Mouse", description: "둘러보기" },
+      { key: "Scroll", description: "카메라 확대·축소" },
+      { key: "Escape", description: "일시 정지 메뉴" },
+      { key: "`", description: "디버그 패널" },
+      { key: "F1", description: "레벨 편집기" },
+      { key: "F6", description: "그래픽 프로필 전환" },
     ];
 
-    content.appendChild(this.createBindingSection("Movement", movement));
-    content.appendChild(this.createBindingSection("Interaction", interaction));
-    content.appendChild(this.createBindingSection("Camera & System", cameraSystem));
+    content.appendChild(this.createBindingSection("이동", movement));
+    content.appendChild(this.createBindingSection("상호작용", interaction));
+    content.appendChild(this.createBindingSection("카메라와 시스템", cameraSystem));
 
     const backBtn = document.createElement("button");
     backBtn.className = "menu-button";
-    backBtn.textContent = "Back";
+    backBtn.textContent = "뒤로";
     backBtn.addEventListener("click", () => this.options.onBack());
     this.root.appendChild(backBtn);
   }
