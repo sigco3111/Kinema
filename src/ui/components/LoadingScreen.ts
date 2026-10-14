@@ -217,7 +217,7 @@ export class LoadingScreen implements Disposable {
       textTransform: "uppercase",
       backdropFilter: "blur(12px)",
     });
-    badge.textContent = "Preparing Level";
+    badge.textContent = "레벨 준비 중";
     content.appendChild(badge);
 
     const title = document.createElement("div");
@@ -245,7 +245,7 @@ export class LoadingScreen implements Disposable {
       textAlign: "center",
       lineHeight: "1.6",
     });
-    subtitle.textContent = "Building the next space. Lighting, physics, and props are coming online.";
+    subtitle.textContent = "새 공간을 준비합니다. 조명, 물리, 소품을 불러오는 중입니다.";
     content.appendChild(subtitle);
 
     const track = document.createElement("div");
@@ -301,7 +301,7 @@ export class LoadingScreen implements Disposable {
       animation: "loadingPulse 2s ease-in-out infinite",
       willChange: "opacity",
     });
-    this.statusText.textContent = "Loading world";
+    this.statusText.textContent = "월드 불러오는 중";
     content.appendChild(this.statusText);
   }
 
