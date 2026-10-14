@@ -511,7 +511,7 @@ export class LevelManager implements Disposable {
 
     // Evict GLTF cache to avoid reusing disposed geometries/materials
     if (name && name !== "procedural") {
-      this.assetLoader.evict(`/assets/levels/${name}.glb`);
+      this.assetLoader.evict(`/Kinema/public/assets/levels/${name}.glb`);
     }
     // Evict per-object imported GLB assets
     for (const assetPath of this.importedAssetPaths) {
@@ -803,7 +803,7 @@ export class LevelManager implements Disposable {
   }
 
   private async loadGLTF(name: string): Promise<void> {
-    const gltf = await this.assetLoader.load(`/assets/levels/${name}.glb`);
+    const gltf = await this.assetLoader.load(`/Kinema/public/assets/levels/${name}.glb`);
     const root = gltf.scene;
 
     const parsed = this.meshParser.parse(root);
