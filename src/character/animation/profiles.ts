@@ -1,7 +1,7 @@
 import type { AnimationProfile } from "./AnimationProfile";
 
-const UAL1_URL = "./assets/models/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb";
-const UAL2_URL = "./assets/models/Universal Animation Library 2[Standard]/Unreal-Godot/UAL2_Standard.glb";
+const UAL1_URL = "./public/assets/models/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb";
+const UAL2_URL = "./public/assets/models/Universal Animation Library 2[Standard]/Unreal-Godot/UAL2_Standard.glb";
 
 export const PLAYER_PROFILE: AnimationProfile = {
   id: "ual-mannequin-player",
