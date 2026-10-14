@@ -42,8 +42,8 @@ export class CheckpointObjectiveSystem implements RuntimeSystem {
   setupLevel(): void {
     this.spawnCheckpoints();
     this.objectiveManager.setObjectives([
-      { id: "reach-checkpoint", text: "Reach a checkpoint" },
-      { id: "activate-beacon", text: "Activate the beacon" },
+      { id: "reach-checkpoint", text: "체크포인트 도달" },
+      { id: "activate-beacon", text: "신호기 활성화" },
     ]);
   }
 
