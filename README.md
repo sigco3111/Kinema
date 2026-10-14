@@ -1,6 +1,8 @@
-# KINEMA 한글판
+# KINEMA 한글판 (월드 검증 미완료)
 
 TypeScript, Three.js, Rapier 물리 엔진으로 만든 3인칭 게임플레이 실험실과 브라우저 레벨 편집기입니다. **2600th/Kinema** 원작의 한국어 포크이며 원본은 MIT 라이선스입니다.
+
+**현재 상태:** 한국어 메뉴·설정과 144개 테스트는 확인했지만, 검증 브라우저에서 월드 진입 시 렌더링이 멈췄습니다. 이 프로젝트는 완성된 실행 결과로 표시하지 않습니다.
 
 ## 플레이
 
@@ -34,11 +36,14 @@ TypeScript, Three.js, Rapier 물리 엔진으로 만든 3인칭 게임플레이 
 ## 개발
 
 ```bash
-npm install
+cp index.source.html index.html
+npm ci
 npm run dev
 npm run build
 npm test
 ```
+
+Pages 루트 `index.html`은 `10-ko.html`을 여는 launcher입니다. 개발·재빌드 때는 보존된 `index.source.html`을 `index.html`로 복사하세요.
 
 한글화 소스 대부분은 포크에 반영했습니다. 큰 전시장 안내판 소스 등 일부 변경은 `korean-localization.patch`에서 확인할 수 있습니다. 사전 빌드 배포본에는 이 변경을 포함했습니다. `README.en.md`에 원본 영문 설명을 보존했습니다. 원본 자산 파일도 보존했습니다.
 
