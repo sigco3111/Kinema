@@ -1,0 +1,1475 @@
+diff --git a/index.html b/index.html
+index d279902..e448b49 100644
+--- a/index.html
++++ b/index.html
+@@ -1,5 +1,5 @@
+ <!DOCTYPE html>
+-<html lang="en">
++<html lang="ko">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+@@ -41,7 +41,7 @@
+     }
+     #ui-overlay * { pointer-events: auto; }
+   </style>
+-</head>
++<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap"><style>body,button,input,select,textarea{font-family:"Noto Sans KR","Malgun Gothic",sans-serif!important}</style></head>
+ <body>
+   <div id="ui-overlay"></div>
+   <script type="module" src="/src/main.ts"></script>
+diff --git a/package-lock.json b/package-lock.json
+index 5c0d37b..3192ed8 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -22,6 +22,7 @@
+         "@types/three": "~0.183.0",
+         "typescript": "^5.9.3",
+         "vite": "^8.0.0",
++        "vite-plugin-singlefile": "^2.3.3",
+         "vitest": "^4.1.0"
+       }
+     },
+@@ -835,6 +836,19 @@
+         "node": ">=18.2.0"
+       }
+     },
++    "node_modules/braces": {
++      "version": "3.0.3",
++      "resolved": "https://registry.npmjs.org/braces/-/braces-3.0.3.tgz",
++      "integrity": "sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "fill-range": "^7.1.1"
++      },
++      "engines": {
++        "node": ">=8"
++      }
++    },
+     "node_modules/chai": {
+       "version": "6.2.2",
+       "resolved": "https://registry.npmjs.org/chai/-/chai-6.2.2.tgz",
+@@ -914,6 +928,19 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/fill-range": {
++      "version": "7.1.1",
++      "resolved": "https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz",
++      "integrity": "sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "to-regex-range": "^5.0.1"
++      },
++      "engines": {
++        "node": ">=8"
++      }
++    },
+     "node_modules/fsevents": {
+       "version": "2.3.2",
+       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz",
+@@ -929,6 +956,16 @@
+         "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+       }
+     },
++    "node_modules/is-number": {
++      "version": "7.0.0",
++      "resolved": "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz",
++      "integrity": "sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.12.0"
++      }
++    },
+     "node_modules/lightningcss": {
+       "version": "1.32.0",
+       "resolved": "https://registry.npmjs.org/lightningcss/-/lightningcss-1.32.0.tgz",
+@@ -1213,6 +1250,33 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/micromatch": {
++      "version": "4.0.8",
++      "resolved": "https://registry.npmjs.org/micromatch/-/micromatch-4.0.8.tgz",
++      "integrity": "sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "braces": "^3.0.3",
++        "picomatch": "^2.3.1"
++      },
++      "engines": {
++        "node": ">=8.6"
++      }
++    },
++    "node_modules/micromatch/node_modules/picomatch": {
++      "version": "2.3.2",
++      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz",
++      "integrity": "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8.6"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/jonschlinkert"
++      }
++    },
+     "node_modules/nanoid": {
+       "version": "3.3.11",
+       "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz",
+@@ -1474,6 +1538,19 @@
+         "node": ">=14.0.0"
+       }
+     },
++    "node_modules/to-regex-range": {
++      "version": "5.0.1",
++      "resolved": "https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz",
++      "integrity": "sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "is-number": "^7.0.0"
++      },
++      "engines": {
++        "node": ">=8.0"
++      }
++    },
+     "node_modules/tone": {
+       "version": "15.1.22",
+       "resolved": "https://registry.npmjs.org/tone/-/tone-15.1.22.tgz",
+@@ -1589,6 +1666,28 @@
+         }
+       }
+     },
++    "node_modules/vite-plugin-singlefile": {
++      "version": "2.3.3",
++      "resolved": "https://registry.npmjs.org/vite-plugin-singlefile/-/vite-plugin-singlefile-2.3.3.tgz",
++      "integrity": "sha512-XVnGH0QzbOa8fxRSsHdCarVN1BSBXNi7uLMQYlrGRN5apdHkk62XQWRJhVever0lnfuyBkwn+kvVChdm/OoOUg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "micromatch": "^4.0.8"
++      },
++      "engines": {
++        "node": ">18.0.0"
++      },
++      "peerDependencies": {
++        "rollup": "^4.59.0",
++        "vite": "^5.4.21 || ^6.0.0 || ^7.0.0 || ^8.0.0"
++      },
++      "peerDependenciesMeta": {
++        "rollup": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/vite/node_modules/fsevents": {
+       "version": "2.3.3",
+       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+diff --git a/package.json b/package.json
+index b947ee1..c3c311b 100644
+--- a/package.json
++++ b/package.json
+@@ -27,6 +27,7 @@
+     "@types/three": "~0.183.0",
+     "typescript": "^5.9.3",
+     "vite": "^8.0.0",
++    "vite-plugin-singlefile": "^2.3.3",
+     "vitest": "^4.1.0"
+   }
+ }
+diff --git a/src/character/animation/profiles.ts b/src/character/animation/profiles.ts
+index 803e0c5..dd6436a 100644
+--- a/src/character/animation/profiles.ts
++++ b/src/character/animation/profiles.ts
+@@ -1,7 +1,7 @@
+ import type { AnimationProfile } from "./AnimationProfile";
+ 
+-const UAL1_URL = "./assets/models/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb";
+-const UAL2_URL = "./assets/models/Universal Animation Library 2[Standard]/Unreal-Godot/UAL2_Standard.glb";
++const UAL1_URL = "./public/assets/models/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb";
++const UAL2_URL = "./public/assets/models/Universal Animation Library 2[Standard]/Unreal-Godot/UAL2_Standard.glb";
+ 
+ export const PLAYER_PROFILE: AnimationProfile = {
+   id: "ual-mannequin-player",
+diff --git a/src/core/ObjectiveManager.ts b/src/core/ObjectiveManager.ts
+index f41ba1f..c5a9ce5 100644
+--- a/src/core/ObjectiveManager.ts
++++ b/src/core/ObjectiveManager.ts
+@@ -52,6 +52,6 @@ export class ObjectiveManager implements Disposable {
+         return;
+       }
+     }
+-    this.eventBus.emit("objective:set", { id: "none", text: "All objectives complete" });
++    this.eventBus.emit("objective:set", { id: "none", text: "모든 목표 달성" });
+   }
+ }
+diff --git a/src/editor/brushes/BlockBrush.ts b/src/editor/brushes/BlockBrush.ts
+index 180c91f..c87d160 100644
+--- a/src/editor/brushes/BlockBrush.ts
++++ b/src/editor/brushes/BlockBrush.ts
+@@ -3,7 +3,7 @@ import { type BrushDefinition, type BrushParams, computeRectFootprint, MIN_BRUSH
+ 
+ export const BlockBrush: BrushDefinition = {
+   id: "block",
+-  label: "Block",
++  label: "블록",
+   shortcut: "1",
+   // Simple cube outline icon
+   icon: "M4 14l8 4.5 8-4.5M4 10l8 4.5 8-4.5M12 2l8 4.5v9L12 20l-8-4.5v-9z",
+diff --git a/src/editor/brushes/DoorFrameBrush.ts b/src/editor/brushes/DoorFrameBrush.ts
+index 07e45cc..6b6efb2 100644
+--- a/src/editor/brushes/DoorFrameBrush.ts
++++ b/src/editor/brushes/DoorFrameBrush.ts
+@@ -6,7 +6,7 @@ const FRAME_THICKNESS = 0.2;
+ 
+ export const DoorFrameBrush: BrushDefinition = {
+   id: "doorframe",
+-  label: "Door Frame",
++  label: "문틀",
+   shortcut: "6",
+   // Door frame icon — rectangular opening with frame
+   icon: "M4 2v20h3V6h10v16h3V2zM7 6h10v16H7z",
+diff --git a/src/editor/brushes/FloorBrush.ts b/src/editor/brushes/FloorBrush.ts
+index 8264506..628ebba 100644
+--- a/src/editor/brushes/FloorBrush.ts
++++ b/src/editor/brushes/FloorBrush.ts
+@@ -5,7 +5,7 @@ const FLOOR_THICKNESS = 0.1;
+ 
+ export const FloorBrush: BrushDefinition = {
+   id: "floor",
+-  label: "Floor",
++  label: "바닥",
+   shortcut: "2",
+   // Flat rectangle icon
+   icon: "M2 16l10 4 10-4-10-4zM2 16v-2l10-4 10 4v2",
+diff --git a/src/editor/brushes/PillarBrush.ts b/src/editor/brushes/PillarBrush.ts
+index e9166e4..12f1684 100644
+--- a/src/editor/brushes/PillarBrush.ts
++++ b/src/editor/brushes/PillarBrush.ts
+@@ -3,7 +3,7 @@ import { type BrushDefinition, type BrushParams, computeRectFootprint, MIN_BRUSH
+ 
+ export const PillarBrush: BrushDefinition = {
+   id: "pillar",
+-  label: "Pillar",
++  label: "기둥",
+   shortcut: "3",
+   // Cylinder outline icon
+   icon: "M6 4a6 3 0 0 1 12 0v16a6 3 0 0 1-12 0zM6 4a6 3 0 0 0 12 0",
+diff --git a/src/editor/brushes/RampBrush.ts b/src/editor/brushes/RampBrush.ts
+index aa7a847..502a07a 100644
+--- a/src/editor/brushes/RampBrush.ts
++++ b/src/editor/brushes/RampBrush.ts
+@@ -3,7 +3,7 @@ import { type BrushDefinition, type BrushParams, computeRectFootprint, MIN_BRUSH
+ 
+ export const RampBrush: BrushDefinition = {
+   id: "ramp",
+-  label: "Ramp",
++  label: "경사로",
+   shortcut: "5",
+   // Wedge/ramp icon — triangle shape
+   icon: "M2 20L22 20L2 4z",
+diff --git a/src/editor/brushes/SpawnBrush.ts b/src/editor/brushes/SpawnBrush.ts
+index dd75614..1b1d6e5 100644
+--- a/src/editor/brushes/SpawnBrush.ts
++++ b/src/editor/brushes/SpawnBrush.ts
+@@ -6,7 +6,7 @@ const CONE_HEIGHT = 0.8;
+ 
+ export const SpawnBrush: BrushDefinition = {
+   id: "spawn",
+-  label: "Spawn",
++  label: "시작 지점",
+   shortcut: "7",
+   // Arrow pointing up — spawn marker icon
+   icon: "M12 2l6 10h-4v8h-4v-8H6z",
+diff --git a/src/editor/brushes/StairsBrush.ts b/src/editor/brushes/StairsBrush.ts
+index a86e6c1..8f74b46 100644
+--- a/src/editor/brushes/StairsBrush.ts
++++ b/src/editor/brushes/StairsBrush.ts
+@@ -6,7 +6,7 @@ const DEFAULT_STEP_COUNT = 8;
+ 
+ export const StairsBrush: BrushDefinition = {
+   id: "stairs",
+-  label: "Stairs",
++  label: "계단",
+   shortcut: "4",
+   // Staircase icon — ascending steps
+   icon: "M2 20h4v-4h4v-4h4v-4h4v-4h2v20H2z",
+diff --git a/src/editor/brushes/TriggerBrush.ts b/src/editor/brushes/TriggerBrush.ts
+index a989cef..fede309 100644
+--- a/src/editor/brushes/TriggerBrush.ts
++++ b/src/editor/brushes/TriggerBrush.ts
+@@ -3,7 +3,7 @@ import { type BrushDefinition, type BrushParams, computeRectFootprint, MIN_BRUSH
+ 
+ export const TriggerBrush: BrushDefinition = {
+   id: "trigger",
+-  label: "Trigger",
++  label: "트리거",
+   shortcut: "8",
+   // Dashed box icon — trigger zone
+   icon: "M4 4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M4 8v4M20 8v4",
+diff --git a/src/editor/panels/HierarchyPanel.ts b/src/editor/panels/HierarchyPanel.ts
+index 8b44236..572f504 100644
+--- a/src/editor/panels/HierarchyPanel.ts
++++ b/src/editor/panels/HierarchyPanel.ts
+@@ -58,7 +58,7 @@ export class HierarchyPanel extends EditorPanel {
+   private readonly handleDocKeydown: (e: KeyboardEvent) => void;
+ 
+   constructor(private callbacks: HierarchyCallbacks) {
+-    super("hierarchy", "Scene");
++    super("hierarchy", "장면");
+ 
+     this.handleDocClick = (e: MouseEvent) => {
+       if (!this.contextMenu.contains(e.target as Node)) {
+@@ -107,7 +107,7 @@ export class HierarchyPanel extends EditorPanel {
+     titleWrap.style.gap = "8px";
+ 
+     const titleLabel = document.createElement("span");
+-    titleLabel.textContent = "Scene";
++    titleLabel.textContent = "장면";
+     titleWrap.appendChild(titleLabel);
+ 
+     this.headerBadge = document.createElement("span");
+@@ -342,7 +342,7 @@ export class HierarchyPanel extends EditorPanel {
+     });
+ 
+     /* eye icon */
+-    const eyeBtn = this.createActionBtn(isVisible ? ICON_EYE_OPEN : ICON_EYE_CLOSED, "Toggle visibility", (e) => {
++    const eyeBtn = this.createActionBtn(isVisible ? ICON_EYE_OPEN : ICON_EYE_CLOSED, "표시 전환", (e) => {
+       e.stopPropagation();
+       this.callbacks.onToggleVisible(obj.id);
+     });
+@@ -350,7 +350,7 @@ export class HierarchyPanel extends EditorPanel {
+     actions.appendChild(eyeBtn);
+ 
+     /* lock icon */
+-    const lockBtn = this.createActionBtn(isLocked ? ICON_LOCK : ICON_UNLOCK, "Toggle lock", (e) => {
++    const lockBtn = this.createActionBtn(isLocked ? ICON_LOCK : ICON_UNLOCK, "잠금 전환", (e) => {
+       e.stopPropagation();
+       this.callbacks.onToggleLock(obj.id);
+     });
+@@ -432,24 +432,24 @@ export class HierarchyPanel extends EditorPanel {
+ 
+     const items: { label: string; action: () => void; disabled?: boolean }[] = [
+       {
+-        label: "Rename",
++        label: "이름 바꾸기",
+         action: () => this.startInlineRename(obj),
+       },
+       {
+-        label: "Duplicate",
++        label: "복제",
+         action: () => this.callbacks.onDuplicate(obj.id),
+       },
+       {
+-        label: "Delete",
++        label: "삭제",
+         action: () => this.callbacks.onDelete(obj.id),
+       },
+       {
+-        label: "Group Selected",
++        label: "선택 항목 그룹화",
+         action: () => this.callbacks.onGroup(this.selectionId ? [this.selectionId] : []),
+         disabled: !this.selectionId,
+       },
+       {
+-        label: "Ungroup",
++        label: "그룹 해제",
+         action: () => this.callbacks.onUngroup(obj.id),
+         disabled: !obj.children || obj.children.length === 0,
+       },
+diff --git a/src/editor/panels/InspectorPanel.ts b/src/editor/panels/InspectorPanel.ts
+index f4f2993..6af81e4 100644
+--- a/src/editor/panels/InspectorPanel.ts
++++ b/src/editor/panels/InspectorPanel.ts
+@@ -76,7 +76,7 @@ export class InspectorPanel extends EditorPanel {
+   private materialCollapsed = false;
+ 
+   constructor(private callbacks: InspectorCallbacks) {
+-    super("inspector", "Inspector");
++    super("inspector", "속성");
+   }
+ 
+   /* ================================================================ */
+@@ -108,7 +108,7 @@ export class InspectorPanel extends EditorPanel {
+     /* -- Header -- */
+     const header = document.createElement("div");
+     header.className = "ke-panel-header";
+-    header.textContent = "Inspector";
++    header.textContent = "속성";
+     el.appendChild(header);
+ 
+     /* Enable drag-to-move via header */
+@@ -126,13 +126,13 @@ export class InspectorPanel extends EditorPanel {
+       color: "var(--ke-text-dim)",
+       fontSize: "var(--ke-font-size)",
+     });
+-    this.placeholder.textContent = "No selection";
++    this.placeholder.textContent = "선택한 항목 없음";
+     body.appendChild(this.placeholder);
+ 
+     /* ---------- Transform section ---------- */
+     this.transformSection = document.createElement("div");
+ 
+-    const transformHeader = this.createSectionHeader("Transform", (collapsed) => {
++    const transformHeader = this.createSectionHeader("변형", (collapsed) => {
+       this.transformCollapsed = collapsed;
+       this.transformBody.style.display = collapsed ? "none" : "";
+     });
+@@ -141,9 +141,9 @@ export class InspectorPanel extends EditorPanel {
+     this.transformBody = document.createElement("div");
+     this.transformBody.className = "ke-inspector";
+ 
+-    this.posInputs = this.createVectorRow(this.transformBody, "Position");
+-    this.rotInputs = this.createVectorRow(this.transformBody, "Rotation");
+-    this.scaleInputs = this.createVectorRow(this.transformBody, "Scale");
++    this.posInputs = this.createVectorRow(this.transformBody, "위치");
++    this.rotInputs = this.createVectorRow(this.transformBody, "회전");
++    this.scaleInputs = this.createVectorRow(this.transformBody, "크기");
+ 
+     /* Physics type dropdown */
+     const physicsRow = document.createElement("div");
+@@ -151,7 +151,7 @@ export class InspectorPanel extends EditorPanel {
+ 
+     const physicsLabel = document.createElement("span");
+     physicsLabel.className = "ke-inspector-label";
+-    physicsLabel.textContent = "Physics";
++    physicsLabel.textContent = "물리";
+     physicsRow.appendChild(physicsLabel);
+ 
+     const physicsValueWrap = document.createElement("div");
+@@ -197,7 +197,7 @@ export class InspectorPanel extends EditorPanel {
+     this.materialSection = document.createElement("div");
+     Object.assign(this.materialSection.style, { marginTop: "4px" });
+ 
+-    const materialHeader = this.createSectionHeader("Material", (collapsed) => {
++    const materialHeader = this.createSectionHeader("재질", (collapsed) => {
+       this.materialCollapsed = collapsed;
+       this.materialBody.style.display = collapsed ? "none" : "";
+     });
+@@ -212,24 +212,24 @@ export class InspectorPanel extends EditorPanel {
+     this.colorHex = colorResult.hex;
+ 
+     /* Roughness */
+-    const roughResult = this.createSliderRow(this.materialBody, "Roughness", 0, 1, 0.01, 0.7);
++    const roughResult = this.createSliderRow(this.materialBody, "거칠기", 0, 1, 0.01, 0.7);
+     this.roughnessSlider = roughResult.slider;
+ 
+     /* Metalness */
+-    const metalResult = this.createSliderRow(this.materialBody, "Metalness", 0, 1, 0.01, 0);
++    const metalResult = this.createSliderRow(this.materialBody, "금속성", 0, 1, 0.01, 0);
+     this.metalnessSlider = metalResult.slider;
+ 
+     /* Emissive */
+-    const emissiveResult = this.createColorRow(this.materialBody, "Emissive", "#000000");
++    const emissiveResult = this.createColorRow(this.materialBody, "발광색", "#000000");
+     this.emissiveInput = emissiveResult.input;
+     this.emissiveHex = emissiveResult.hex;
+ 
+     /* Emissive Intensity */
+-    const intensityResult = this.createSliderRow(this.materialBody, "Intensity", 0, 5, 0.01, 0);
++    const intensityResult = this.createSliderRow(this.materialBody, "강도", 0, 5, 0.01, 0);
+     this.emissiveIntensitySlider = intensityResult.slider;
+ 
+     /* Opacity */
+-    const opacityResult = this.createSliderRow(this.materialBody, "Opacity", 0, 1, 0.01, 1);
++    const opacityResult = this.createSliderRow(this.materialBody, "불투명도", 0, 1, 0.01, 1);
+     this.opacitySlider = opacityResult.slider;
+ 
+     /* Wire up material input callbacks */
+diff --git a/src/editor/panels/ToolbarPanel.ts b/src/editor/panels/ToolbarPanel.ts
+index 53342cf..0e4236c 100644
+--- a/src/editor/panels/ToolbarPanel.ts
++++ b/src/editor/panels/ToolbarPanel.ts
+@@ -30,7 +30,7 @@ export class ToolbarPanel extends EditorPanel {
+   private gridBtn!: HTMLButtonElement;
+ 
+   constructor(private callbacks: ToolbarCallbacks) {
+-    super("toolbar", "Toolbar");
++    super("toolbar", "도구 모음");
+   }
+ 
+   build(): void {
+@@ -47,8 +47,8 @@ export class ToolbarPanel extends EditorPanel {
+     // ── Left section: File operations ──
+     const leftGroup = this.createGroup();
+     leftGroup.appendChild(this.createIconBtn(ICON_SAVE, "Save (Ctrl+S)", this.callbacks.onSave));
+-    leftGroup.appendChild(this.createIconBtn(ICON_FOLDER, "Load", this.callbacks.onLoad));
+-    leftGroup.appendChild(this.createIconBtn(ICON_IMPORT, "Import GLB", this.callbacks.onImportGLB));
++    leftGroup.appendChild(this.createIconBtn(ICON_FOLDER, "불러오기", this.callbacks.onLoad));
++    leftGroup.appendChild(this.createIconBtn(ICON_IMPORT, "GLB 가져오기", this.callbacks.onImportGLB));
+     leftGroup.appendChild(this.createSep());
+     leftGroup.appendChild(this.createIconBtn(ICON_UNDO, "Undo (Ctrl+Z)", this.callbacks.onUndo));
+     leftGroup.appendChild(this.createIconBtn(ICON_REDO, "Redo (Ctrl+Y)", this.callbacks.onRedo));
+@@ -62,7 +62,7 @@ export class ToolbarPanel extends EditorPanel {
+ 
+     const playBtn = document.createElement("button");
+     playBtn.className = "ke-btn ke-btn-play";
+-    playBtn.title = "Play Test (Ctrl+P)";
++    playBtn.title = "플레이 테스트 (Ctrl+P)";
+     // Build a filled play triangle SVG directly (not using svgIcon which sets stroke)
+     const playSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+     playSvg.setAttribute("width", "14");
+@@ -75,7 +75,7 @@ export class ToolbarPanel extends EditorPanel {
+     playSvg.appendChild(playPath);
+     playBtn.appendChild(playSvg);
+     const playLabel = document.createElement("span");
+-    playLabel.textContent = "Play";
++    playLabel.textContent = "플레이";
+     playLabel.style.fontSize = "12px";
+     playLabel.style.fontWeight = "600";
+     playBtn.appendChild(playLabel);
+@@ -89,16 +89,16 @@ export class ToolbarPanel extends EditorPanel {
+     // ── Right section: Snap/Grid toggles + Transform modes ──
+     const rightGroup = this.createGroup();
+ 
+-    this.snapBtn = this.createIconBtn(ICON_SNAP, "Toggle Snap", this.callbacks.onToggleSnap);
+-    this.gridBtn = this.createIconBtn(ICON_GRID, "Toggle Grid", this.callbacks.onToggleGrid);
++    this.snapBtn = this.createIconBtn(ICON_SNAP, "스냅 전환", this.callbacks.onToggleSnap);
++    this.gridBtn = this.createIconBtn(ICON_GRID, "격자 전환", this.callbacks.onToggleGrid);
+     rightGroup.appendChild(this.snapBtn);
+     rightGroup.appendChild(this.gridBtn);
+     rightGroup.appendChild(this.createSep());
+ 
+     const modes: { label: string; mode: TransformMode; shortcut: string }[] = [
+-      { label: "W", mode: "translate", shortcut: "Move (W)" },
+-      { label: "E", mode: "rotate", shortcut: "Rotate (E)" },
+-      { label: "R", mode: "scale", shortcut: "Scale (R)" },
++      { label: "W", mode: "translate", shortcut: "이동 (W)" },
++      { label: "E", mode: "rotate", shortcut: "회전 (E)" },
++      { label: "R", mode: "scale", shortcut: "크기 (R)" },
+     ];
+ 
+     for (const { label, mode, shortcut } of modes) {
+diff --git a/src/editor/tools/GLBPlacementTool.ts b/src/editor/tools/GLBPlacementTool.ts
+index 7872a6b..8e83bb2 100644
+--- a/src/editor/tools/GLBPlacementTool.ts
++++ b/src/editor/tools/GLBPlacementTool.ts
+@@ -58,7 +58,7 @@ export class GLBPlacementTool implements EditorTool {
+     const objectUrl = URL.createObjectURL(file);
+     try {
+       const gltf = await this.levelManager.getAssetLoader().load(objectUrl);
+-      const assetPath = `/assets/models/${file.name}`;
++      const assetPath = `/Kinema/public/assets/models/${file.name}`;
+ 
+       // Register the loaded GLTF under the canonical asset path so it survives
+       // play-test restore (spawnSerializedObject calls load(assetPath)).
+diff --git a/src/interaction/interactables/GrabbableObject.ts b/src/interaction/interactables/GrabbableObject.ts
+index 9ed7e7c..7ffd01c 100644
+--- a/src/interaction/interactables/GrabbableObject.ts
++++ b/src/interaction/interactables/GrabbableObject.ts
+@@ -9,7 +9,7 @@ const _grabOffset = new THREE.Vector3();
+ 
+ export class GrabbableObject implements IInteractable {
+   readonly id: string;
+-  readonly label = "Grab";
++  readonly label = "잡기";
+   readonly position = new THREE.Vector3();
+ 
+   constructor(
+diff --git a/src/level/LevelManager.ts b/src/level/LevelManager.ts
+index 61bf1fd..5ab490e 100644
+--- a/src/level/LevelManager.ts
++++ b/src/level/LevelManager.ts
+@@ -511,7 +511,7 @@ export class LevelManager implements Disposable {
+ 
+     // Evict GLTF cache to avoid reusing disposed geometries/materials
+     if (name && name !== "procedural") {
+-      this.assetLoader.evict(`/assets/levels/${name}.glb`);
++      this.assetLoader.evict(`/Kinema/public/assets/levels/${name}.glb`);
+     }
+     // Evict per-object imported GLB assets
+     for (const assetPath of this.importedAssetPaths) {
+@@ -803,7 +803,7 @@ export class LevelManager implements Disposable {
+   }
+ 
+   private async loadGLTF(name: string): Promise<void> {
+-    const gltf = await this.assetLoader.load(`/assets/levels/${name}.glb`);
++    const gltf = await this.assetLoader.load(`/Kinema/public/assets/levels/${name}.glb`);
+     const root = gltf.scene;
+ 
+     const parsed = this.meshParser.parse(root);
+diff --git a/src/level/ProceduralBuilder.ts b/src/level/ProceduralBuilder.ts
+index 60da0e5..7e10c4f 100644
+--- a/src/level/ProceduralBuilder.ts
++++ b/src/level/ProceduralBuilder.ts
+@@ -638,7 +638,7 @@ export class ProceduralBuilder {
+       addStep("Step3_col", new THREE.Vector3(4, 0.14, 0.55), new THREE.Vector3(-8, bayTopY + 0.07, zSteps - 3));
+       addStep("Step4_col", new THREE.Vector3(4, 0.2, 4), new THREE.Vector3(-8, bayTopY + 0.1, zSteps));
+       this.createSectionLabel(
+-        "Steps & Autostep\nAutomatic stair climbing",
++        "계단과 자동 오르기\n계단을 자동으로 오릅니다",
+         new THREE.Vector3(0, 2.0, zSteps + 3),
+         8.4,
+         1.75,
+@@ -681,7 +681,7 @@ export class ProceduralBuilder {
+         this.colliders.push(this.colliderFactory.createTrimesh(slope));
+       });
+       this.createSectionLabel(
+-        "Slopes\n23.5\u00B0 \u2022 43.1\u00B0 \u2022 62.7\u00B0",
++        "경사로\n23.5\u00B0 \u2022 43.1\u00B0 \u2022 62.7\u00B0",
+         new THREE.Vector3(0, 3.6, zSlopes + 6),
+         7.2,
+         1.55,
+@@ -695,7 +695,7 @@ export class ProceduralBuilder {
+       this.createLadder("MainLadder", new THREE.Vector3(14, bayTopY, zMovement), 4.2, obstacleMat);
+       this.createCrouchCourse(new THREE.Vector3(0, bayTopY, zMovement), obstacleMat);
+       this.createSectionLabel(
+-        "Movement\nW/S climb \u2022 C crouch \u2022 Space jump off rope",
++        "이동 조작\nW/S 오르내리기 \u2022 C 앉기 \u2022 Space 로프에서 점프",
+         new THREE.Vector3(0, 3.0, zMovement + 6),
+         11.2,
+         2.25,
+@@ -705,7 +705,7 @@ export class ProceduralBuilder {
+     if (isTarget("doubleJump")) {
+       this.createDoubleJumpCourse(new THREE.Vector3(-6, bayTopY, zDoubleJump), stepMat);
+       this.createSectionLabel(
+-        "Double Jump\nSpace \u2022 Multi-tier jump platforms",
++        "이단 점프\nSpace \u2022 여러 높이의 점프 발판",
+         new THREE.Vector3(-2, 4.9, zDoubleJump),
+         7.6,
+         1.65,
+@@ -715,7 +715,7 @@ export class ProceduralBuilder {
+     await this.yieldProgress(0.6);
+ 
+     if (isTarget("grab")) {
+-      this.createSectionLabel("Grab & Pull\nPress F to grab / release", new THREE.Vector3(0, 2.55, zGrab), 10.2, 2.2);
++      this.createSectionLabel("잡고 끌기\nF 잡기 / 놓기", new THREE.Vector3(0, 2.55, zGrab), 10.2, 2.2);
+       const grabbableMat = new THREE.MeshPhysicalMaterial({
+         color: 0x4fa8d8,
+         roughness: 0.3,
+@@ -1296,12 +1296,12 @@ export class ProceduralBuilder {
+     } // end throw
+ 
+     if (isTarget("door")) {
+-      this.createSectionLabel("Door & Beacon\nPress F near objects", new THREE.Vector3(0, 2.55, zDoor), 10.2, 2.15);
++      this.createSectionLabel("문과 신호기\n물체 가까이에서 F", new THREE.Vector3(0, 2.55, zDoor), 10.2, 2.15);
+     } // end door
+ 
+     if (isTarget("vehicles")) {
+       this.createSectionLabel(
+-        "Vehicles\nF to enter / exit \u2022 E/Q altitude (drone)",
++        "탑승물\nF 타기 / 내리기 \u2022 E/Q 고도 조절 (드론)",
+         new THREE.Vector3(0, 2.55, zVehicles),
+         9.2,
+         2.05,
+@@ -1341,7 +1341,7 @@ export class ProceduralBuilder {
+         kinematicPlatformMat,
+       );
+       this.createSectionLabel(
+-        "Moving Platforms\nSide \u2022 Elevating \u2022 Rotating",
++        "움직이는 발판\n좌우 이동 \u2022 상하 이동 \u2022 회전",
+         new THREE.Vector3(0, 3.6, zPlatformsMoving + 6.5),
+         9.2,
+         1.9,
+@@ -1399,7 +1399,7 @@ export class ProceduralBuilder {
+         { kind: "boost-platform", jumpBoostMultiplier: boostPadJumpMultiplier, autoBounce: true },
+       );
+       this.createSectionLabel(
+-        "Physics Platforms\nBoost Pad \u2022 Rolling Drum \u2022 Moving Boost Pad",
++        "물리 발판\n도약 발판 \u2022 회전 드럼 \u2022 움직이는 도약 발판",
+         new THREE.Vector3(0, 3.6, zPlatformsPhysics + 6.5),
+         12.4,
+         2.05,
+@@ -1409,7 +1409,7 @@ export class ProceduralBuilder {
+     if (isTarget("materials")) {
+       // Materials bay.
+       this.createSectionLabel(
+-        "Materials\nGlass \u2022 Mirror \u2022 Copper \u2022 Ceramic \u2022 Emissive\nRough \u2022 Metal \u2022 Brushed \u2022 Iridescent \u2022 Lava",
++        "재질\n유리 \u2022 거울 \u2022 구리 \u2022 도자기 \u2022 발광\n거친 표면 \u2022 금속 \u2022 브러시 표면 \u2022 무지갯빛 \u2022 용암",
+         new THREE.Vector3(0, 3.2, zMaterials + 6),
+         11.4,
+         2.45,
+@@ -1423,7 +1423,7 @@ export class ProceduralBuilder {
+     if (isTarget("vfx")) {
+       // VFX bay.
+       this.createSectionLabel(
+-        "Visual Effects\nDissolve \u2022 Fire & Smoke \u2022 Lightning & Rain \u2022 Glowing Ring",
++        "시각 효과\n디졸브 \u2022 불과 연기 \u2022 번개와 비 \u2022 빛나는 고리",
+         new THREE.Vector3(0, 3.2, zVfx + 6),
+         11.4,
+         2.15,
+@@ -1434,7 +1434,7 @@ export class ProceduralBuilder {
+     if (isTarget("navigation")) {
+       // Navigation bay: navmesh + patrol agents.
+       this.createSectionLabel(
+-        "Navigation\nNavMesh \u2022 Crowd Patrol \u2022 N=debug \u2022 T=target",
++        "경로 탐색\nNavMesh \u2022 군중 순찰 \u2022 N=디버그 \u2022 T=대상",
+         new THREE.Vector3(0, 3.2, zNavigation + 6),
+         11.4,
+         2.25,
+@@ -1444,7 +1444,7 @@ export class ProceduralBuilder {
+ 
+     if (isTarget("futureA")) {
+       // Reserved bay with "under construction" visual treatment.
+-      this.createSectionLabel("Reserved\nFuture demos", new THREE.Vector3(0, 2.5, zFutureA), 8.8, 2.0);
++      this.createSectionLabel("준비 중\n추가 데모 예정", new THREE.Vector3(0, 2.5, zFutureA), 8.8, 2.0);
+ 
+       const yellowMat = new THREE.MeshStandardMaterial({ color: 0xffcc00, roughness: 0.9 });
+       const darkMat = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.9 });
+@@ -2856,12 +2856,12 @@ export class ProceduralBuilder {
+     ctx.textAlign = "left";
+     const contentX = panelX + 72;
+     const availableTextWidth = panelX + panelW - contentX - 72;
+-    ctx.font = `800 ${headerFontPx}px Segoe UI, Arial, sans-serif`;
++    ctx.font = `800 ${headerFontPx}px Noto Sans KR, Malgun Gothic, Arial, sans-serif`;
+     const headerWidth =
+       headerCode && headerTitle
+         ? ctx.measureText(`${headerCode}  ${headerTitle}`).width
+         : ctx.measureText(headerTitle).width;
+-    ctx.font = `600 ${bodyFontPx}px Segoe UI, Arial, sans-serif`;
++    ctx.font = `600 ${bodyFontPx}px Noto Sans KR, Malgun Gothic, Arial, sans-serif`;
+     const bodyWidths = bodyLines.map((l) => ctx.measureText(l).width);
+     const maxLineWidth = Math.max(1, headerWidth, ...bodyWidths);
+     const scaleFactor = Math.min(1, availableTextWidth / maxLineWidth);
+@@ -2876,7 +2876,7 @@ export class ProceduralBuilder {
+     ctx.shadowBlur = 10;
+ 
+     // Header: draw "code" in accent + title in white.
+-    ctx.font = `800 ${headerFontPx}px Segoe UI, Arial, sans-serif`;
++    ctx.font = `800 ${headerFontPx}px Noto Sans KR, Malgun Gothic, Arial, sans-serif`;
+     if (headerCode) {
+       const code = `${headerCode}`;
+       const codeWidth = ctx.measureText(`${code}  `).width;
+@@ -2891,7 +2891,7 @@ export class ProceduralBuilder {
+ 
+     // Body: smaller, slightly muted.
+     ctx.shadowBlur = 6;
+-    ctx.font = `600 ${bodyFontPx}px Segoe UI, Arial, sans-serif`;
++    ctx.font = `600 ${bodyFontPx}px Noto Sans KR, Malgun Gothic, Arial, sans-serif`;
+     ctx.fillStyle = "rgba(224, 238, 255, 0.9)";
+     const bodyStartY = startY + headerLineHeight / 2 + bodyLineHeight / 2;
+     for (let i = 0; i < bodyLines.length; i += 1) {
+diff --git a/src/level/VfxShowcase.ts b/src/level/VfxShowcase.ts
+index 0232ee6..d70f8d1 100644
+--- a/src/level/VfxShowcase.ts
++++ b/src/level/VfxShowcase.ts
+@@ -381,7 +381,7 @@ export async function createVfxShowcase(
+       created.push(fireLight);
+ 
+       // Smoke sprites (keep existing Kenney texture approach)
+-      const smokeTexture = new THREE.TextureLoader().load("/assets/sprites/smoke_black.png");
++      const smokeTexture = new THREE.TextureLoader().load("/Kinema/public/assets/sprites/smoke_black.png");
+       const SMOKE_COUNT = 10;
+       const smokeMinY = 3.0;
+       const smokeMaxY = 8.0;
+@@ -452,7 +452,7 @@ export async function createVfxShowcase(
+       const loader = new GLTFLoader();
+       try {
+         const gltf = await new Promise<{ scene: THREE.Group }>((resolve, reject) => {
+-          loader.load("assets/models/cloud_lightning.glb", resolve as (gltf: unknown) => void, undefined, reject);
++          loader.load("public/assets/models/cloud_lightning.glb", resolve as (gltf: unknown) => void, undefined, reject);
+         });
+         const model = gltf.scene;
+         const posX = base.x + 5;
+diff --git a/src/renderer/rendererAssets.ts b/src/renderer/rendererAssets.ts
+index 1cc3f98..ec27049 100644
+--- a/src/renderer/rendererAssets.ts
++++ b/src/renderer/rendererAssets.ts
+@@ -50,7 +50,7 @@ export class RendererAssetLibrary {
+     }
+ 
+     try {
+-      const url = `/assets/postfx/${preset.file}`;
++      const url = `/Kinema/public/assets/postfx/${preset.file}`;
+       const texture = await this.loadLutByFormat(url, preset.format);
+       if (!texture) return null;
+       texture.needsUpdate = true;
+@@ -88,7 +88,7 @@ export class RendererAssetLibrary {
+     if (!preset?.file) return null;
+ 
+     try {
+-      const url = `/assets/env/${preset.file}`;
++      const url = `/Kinema/public/assets/env/${preset.file}`;
+       const hdrTexture = await this.hdrLoader.loadAsync(url);
+       const envTarget = this.pmrem.fromEquirectangular(hdrTexture);
+       hdrTexture.dispose();
+diff --git a/src/systems/CheckpointObjectiveSystem.ts b/src/systems/CheckpointObjectiveSystem.ts
+index f58ca67..8ea42e3 100644
+--- a/src/systems/CheckpointObjectiveSystem.ts
++++ b/src/systems/CheckpointObjectiveSystem.ts
+@@ -42,8 +42,8 @@ export class CheckpointObjectiveSystem implements RuntimeSystem {
+   setupLevel(): void {
+     this.spawnCheckpoints();
+     this.objectiveManager.setObjectives([
+-      { id: "reach-checkpoint", text: "Reach a checkpoint" },
+-      { id: "activate-beacon", text: "Activate the beacon" },
++      { id: "reach-checkpoint", text: "체크포인트 도달" },
++      { id: "activate-beacon", text: "신호기 활성화" },
+     ]);
+   }
+ 
+diff --git a/src/systems/InteractableSystem.ts b/src/systems/InteractableSystem.ts
+index 1ba4919..519891e 100644
+--- a/src/systems/InteractableSystem.ts
++++ b/src/systems/InteractableSystem.ts
+@@ -205,7 +205,7 @@ export class InteractableSystem implements RuntimeSystem {
+         const obj = this.throwableObjects.get(h1) ?? this.throwableObjects.get(h2);
+         if (!obj) return;
+         if (event.totalForceMagnitude() > 12) {
+-          this.uiManager.hud.showStatus("Impact!", 700);
++          this.uiManager.hud.showStatus("충돌!", 700);
+         }
+       });
+     }
+diff --git a/src/ui/UIManager.ts b/src/ui/UIManager.ts
+index bdf4bf7..b350201 100644
+--- a/src/ui/UIManager.ts
++++ b/src/ui/UIManager.ts
+@@ -46,7 +46,7 @@ export class UIManager implements Disposable {
+     this.loadingScreen = new LoadingScreen();
+     this.deathEffect = new DeathEffect(this.eventBus);
+ 
+-    // "Click to start" hint for audio activation
++    // "클릭하여 시작" hint for audio activation
+     this.createInteractionHint();
+     this.createOrientationHint();
+ 
+@@ -183,7 +183,7 @@ export class UIManager implements Disposable {
+ 
+     this.hintEl = document.createElement("div");
+     const hint = this.hintEl;
+-    hint.textContent = "Click to start";
++    hint.textContent = "클릭하여 시작";
+     hint.className = "kinema-ui-hint";
+ 
+     document.body.appendChild(hint);
+@@ -204,7 +204,7 @@ export class UIManager implements Disposable {
+     this.orientationHintEl = document.createElement("div");
+     const hint = this.orientationHintEl;
+     hint.className = "kinema-orientation-hint";
+-    hint.textContent = "Rotate to landscape for the best view";
++    hint.textContent = "가로 화면으로 돌려주세요";
+     Object.assign(hint.style, {
+       position: "fixed",
+       left: "50%",
+diff --git a/src/ui/components/DebugPanel.ts b/src/ui/components/DebugPanel.ts
+index 780fcd0..ba8f740 100644
+--- a/src/ui/components/DebugPanel.ts
++++ b/src/ui/components/DebugPanel.ts
+@@ -152,14 +152,14 @@ export class DebugPanel implements Disposable {
+     parent.appendChild(this.panel);
+ 
+     const title = document.createElement("div");
+-    title.textContent = "Renderer & Debug";
++    title.textContent = "렌더러와 디버그";
+     title.style.cssText = "font-size:13px;font-weight:600;letter-spacing:0.02em;margin-bottom:10px;color:#eef7ff;";
+     this.panel.appendChild(title);
+ 
+     this.graphWrap = document.createElement("div");
+     this.graphWrap.style.cssText =
+       "display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin-bottom:8px;";
+-    this.graphWrap.textContent = "Graphs will load on first open.";
++    this.graphWrap.textContent = "처음 열 때 그래프를 불러옵니다.";
+     this.panel.appendChild(this.graphWrap);
+ 
+     this.metrics = document.createElement("div");
+@@ -183,7 +183,7 @@ export class DebugPanel implements Disposable {
+     this.metricSpeed = this.addMetricRow("Speed");
+     this.metricFps = this.addMetricRow("FPS");
+     this.metricFrame = this.addMetricRow("Frame");
+-    this.metricPhysics = this.addMetricRow("Physics");
++    this.metricPhysics = this.addMetricRow("물리");
+     this.metricDraw = this.addMetricRow("Draw Calls");
+     this.metricTris = this.addMetricRow("Triangles");
+ 
+@@ -315,7 +315,7 @@ export class DebugPanel implements Disposable {
+     qualitySection.appendChild(
+       this.createSelect(
+         "graphics",
+-        "Graphics",
++        "그래픽",
+         ["performance", "balanced", "cinematic"],
+         "cinematic",
+         "Applies renderer quality presets.",
+@@ -351,14 +351,14 @@ export class DebugPanel implements Disposable {
+       ),
+     );
+     qualitySection.appendChild(
+-      this.createCheckbox("shadows", "Shadows", true, "Enables or disables real-time shadow rendering.", (value) => {
++      this.createCheckbox("shadows", "그림자", true, "Enables or disables real-time shadow rendering.", (value) => {
+         this.eventBus.emit("debug:shadows", value);
+       }),
+     );
+     qualitySection.appendChild(
+       this.createSelect(
+         "shadowQuality",
+-        "Shadow quality",
++        "그림자 품질",
+         ["auto", "performance", "balanced", "cinematic"],
+         "auto",
+         "Auto follows graphics profile; manual values override per-profile shadow map size.",
+@@ -450,7 +450,7 @@ export class DebugPanel implements Disposable {
+       ),
+     );
+     postFxSection.appendChild(
+-      this.createCheckbox("bloomEnabled", "Bloom", true, "Toggles bright highlight bloom.", (value) => {
++      this.createCheckbox("bloomEnabled", "빛 번짐", true, "Toggles bright highlight bloom.", (value) => {
+         this.eventBus.emit("debug:bloomEnabled", value);
+         this.updateVisibilityFromControls();
+       }),
+@@ -473,7 +473,7 @@ export class DebugPanel implements Disposable {
+     postFxSection.appendChild(
+       this.createCheckbox(
+         "casEnabled",
+-        "CAS sharpening",
++        "CAS 선명화",
+         true,
+         "Contrast-adaptive sharpening applied after anti-aliasing.",
+         (value) => {
+@@ -485,7 +485,7 @@ export class DebugPanel implements Disposable {
+     postFxSection.appendChild(
+       this.createRange(
+         "casStrength",
+-        "CAS strength",
++        "CAS 강도",
+         0,
+         1,
+         0.01,
+@@ -500,7 +500,7 @@ export class DebugPanel implements Disposable {
+     postFxSection.appendChild(
+       this.createCheckbox(
+         "vignetteEnabled",
+-        "Vignette",
++        "비네트",
+         true,
+         "Adds subtle edge darkening for depth focus.",
+         (value) => {
+@@ -724,7 +724,7 @@ export class DebugPanel implements Disposable {
+   private async ensureStatsPanels(): Promise<void> {
+     if (this.statsPanels.length > 0) return;
+     if (this.statsLoading) return this.statsLoading;
+-    this.graphWrap.textContent = "Loading graphs…";
++    this.graphWrap.textContent = "그래프 불러오는 중…";
+     this.statsLoading = import("three/addons/libs/stats.module.js")
+       .then((mod) => {
+         const StatsCtor = (mod as unknown as { default: new () => any }).default;
+@@ -738,7 +738,7 @@ export class DebugPanel implements Disposable {
+         this.graphWrap.appendChild(mb.dom);
+       })
+       .catch((err) => {
+-        this.graphWrap.textContent = "Graphs unavailable.";
++        this.graphWrap.textContent = "그래프를 불러올 수 없습니다.";
+         console.warn("[DebugPanel] Failed to load stats graphs:", err);
+       })
+       .finally(() => {
+diff --git a/src/ui/components/HUD.ts b/src/ui/components/HUD.ts
+index 98546d9..dab2082 100644
+--- a/src/ui/components/HUD.ts
++++ b/src/ui/components/HUD.ts
+@@ -44,7 +44,7 @@ export class HUD implements Disposable {
+     holdKey.textContent = "F";
+     const holdCaption = document.createElement("div");
+     holdCaption.className = "hud-hold-caption";
+-    holdCaption.textContent = "Hold";
++    holdCaption.textContent = "길게 누르기";
+     this.holdFill.appendChild(holdKey);
+     this.holdFill.appendChild(holdCaption);
+     this.holdWrap.appendChild(this.holdFill);
+@@ -59,7 +59,7 @@ export class HUD implements Disposable {
+     this.objective.className = "hud-glass-card hud-objective-card";
+     const objectiveEyebrow = document.createElement("div");
+     objectiveEyebrow.className = "hud-card-eyebrow";
+-    objectiveEyebrow.textContent = "Objective";
++    objectiveEyebrow.textContent = "목표";
+     this.objectiveText = document.createElement("div");
+     this.objectiveText.className = "hud-objective-text";
+     this.objective.appendChild(objectiveEyebrow);
+diff --git a/src/ui/components/LoadingScreen.ts b/src/ui/components/LoadingScreen.ts
+index 4a06893..4084194 100644
+--- a/src/ui/components/LoadingScreen.ts
++++ b/src/ui/components/LoadingScreen.ts
+@@ -217,7 +217,7 @@ export class LoadingScreen implements Disposable {
+       textTransform: "uppercase",
+       backdropFilter: "blur(12px)",
+     });
+-    badge.textContent = "Preparing Level";
++    badge.textContent = "레벨 준비 중";
+     content.appendChild(badge);
+ 
+     const title = document.createElement("div");
+@@ -245,7 +245,7 @@ export class LoadingScreen implements Disposable {
+       textAlign: "center",
+       lineHeight: "1.6",
+     });
+-    subtitle.textContent = "Building the next space. Lighting, physics, and props are coming online.";
++    subtitle.textContent = "새 공간을 준비합니다. 조명, 물리, 소품을 불러오는 중입니다.";
+     content.appendChild(subtitle);
+ 
+     const track = document.createElement("div");
+@@ -301,7 +301,7 @@ export class LoadingScreen implements Disposable {
+       animation: "loadingPulse 2s ease-in-out infinite",
+       willChange: "opacity",
+     });
+-    this.statusText.textContent = "Loading world";
++    this.statusText.textContent = "월드 불러오는 중";
+     content.appendChild(this.statusText);
+   }
+ 
+diff --git a/src/ui/menus/HelpMenu.ts b/src/ui/menus/HelpMenu.ts
+index 945d778..7a17fb0 100644
+--- a/src/ui/menus/HelpMenu.ts
++++ b/src/ui/menus/HelpMenu.ts
+@@ -17,7 +17,7 @@ export class HelpMenu {
+ 
+     const title = document.createElement("h1");
+     title.className = "menu-title";
+-    title.textContent = "Controls & Help";
++    title.textContent = "조작과 도움말";
+     this.root.appendChild(title);
+ 
+     const content = document.createElement("div");
+@@ -25,37 +25,37 @@ export class HelpMenu {
+     this.root.appendChild(content);
+ 
+     const movement: KeyBinding[] = [
+-      { key: "W A S D", description: "Move" },
+-      { key: "↑ ↓ ← →", description: "Move (arrows)" },
+-      { key: "Space", description: "Jump / Double Jump" },
+-      { key: "C", description: "Crouch" },
+-      { key: "Shift", description: "Sprint" },
+-      { key: "W / S", description: "Climb (on ladder)" },
++      { key: "W A S D", description: "이동" },
++      { key: "↑ ↓ ← →", description: "이동 (방향키)" },
++      { key: "Space", description: "점프 / 이단 점프" },
++      { key: "C", description: "앉기" },
++      { key: "Shift", description: "달리기" },
++      { key: "W / S", description: "사다리 오르내리기" },
+     ];
+ 
+     const interaction: KeyBinding[] = [
+-      { key: "F", description: "Interact / Grab" },
+-      { key: "LMB", description: "Throw / Primary action" },
+-      { key: "E", description: "Altitude Up" },
+-      { key: "Q", description: "Altitude Down" },
++      { key: "F", description: "상호작용 / 잡기" },
++      { key: "LMB", description: "던지기 / 기본 동작" },
++      { key: "E", description: "고도 올리기" },
++      { key: "Q", description: "고도 내리기" },
+     ];
+ 
+     const cameraSystem: KeyBinding[] = [
+-      { key: "Mouse", description: "Look around" },
+-      { key: "Scroll", description: "Zoom camera" },
+-      { key: "Escape", description: "Pause menu" },
+-      { key: "`", description: "Debug panel" },
+-      { key: "F1", description: "Level editor" },
+-      { key: "F6", description: "Cycle graphics profile" },
++      { key: "Mouse", description: "둘러보기" },
++      { key: "Scroll", description: "카메라 확대·축소" },
++      { key: "Escape", description: "일시 정지 메뉴" },
++      { key: "`", description: "디버그 패널" },
++      { key: "F1", description: "레벨 편집기" },
++      { key: "F6", description: "그래픽 프로필 전환" },
+     ];
+ 
+-    content.appendChild(this.createBindingSection("Movement", movement));
+-    content.appendChild(this.createBindingSection("Interaction", interaction));
+-    content.appendChild(this.createBindingSection("Camera & System", cameraSystem));
++    content.appendChild(this.createBindingSection("이동", movement));
++    content.appendChild(this.createBindingSection("상호작용", interaction));
++    content.appendChild(this.createBindingSection("카메라와 시스템", cameraSystem));
+ 
+     const backBtn = document.createElement("button");
+     backBtn.className = "menu-button";
+-    backBtn.textContent = "Back";
++    backBtn.textContent = "뒤로";
+     backBtn.addEventListener("click", () => this.options.onBack());
+     this.root.appendChild(backBtn);
+   }
+diff --git a/src/ui/menus/LevelSelectMenu.ts b/src/ui/menus/LevelSelectMenu.ts
+index e94089a..9a004c9 100644
+--- a/src/ui/menus/LevelSelectMenu.ts
++++ b/src/ui/menus/LevelSelectMenu.ts
+@@ -21,13 +21,13 @@ export class LevelSelectMenu {
+     // Title
+     const title = document.createElement("h1");
+     title.className = "menu-title";
+-    title.textContent = "Level Select";
++    title.textContent = "레벨 선택";
+     this.root.appendChild(title);
+ 
+     // Procedural Demo button (always first, primary style)
+     const proceduralBtn = document.createElement("button");
+     proceduralBtn.className = "menu-button";
+-    proceduralBtn.textContent = "Procedural Demo";
++    proceduralBtn.textContent = "절차 생성 데모";
+     proceduralBtn.addEventListener("click", () => this.options.onPlayProcedural());
+     this.root.appendChild(proceduralBtn);
+ 
+@@ -39,7 +39,7 @@ export class LevelSelectMenu {
+     // Back button
+     const backBtn = document.createElement("button");
+     backBtn.className = "menu-button";
+-    backBtn.textContent = "Back";
++    backBtn.textContent = "뒤로";
+     backBtn.addEventListener("click", () => this.options.onBack());
+     this.root.appendChild(backBtn);
+   }
+@@ -64,7 +64,7 @@ export class LevelSelectMenu {
+     if (levels.length === 0) {
+       const empty = document.createElement("div");
+       empty.className = "menu-level-empty";
+-      empty.textContent = "No saved levels yet. Choose Create Level from the main menu to make one.";
++      empty.textContent = "저장한 레벨이 없습니다. 메인 메뉴에서 레벨 만들기를 선택하세요.";
+       this.listContainer.appendChild(empty);
+       return;
+     }
+@@ -101,18 +101,18 @@ export class LevelSelectMenu {
+ 
+     const playBtn = document.createElement("button");
+     playBtn.className = "menu-button-small";
+-    playBtn.textContent = "Play";
++    playBtn.textContent = "플레이";
+     playBtn.addEventListener("click", () => this.options.onSelectLevel(meta.key));
+     actions.appendChild(playBtn);
+ 
+     const deleteBtn = document.createElement("button");
+     deleteBtn.className = "menu-button-small menu-button-danger";
+-    deleteBtn.textContent = "Delete";
++    deleteBtn.textContent = "삭제";
+     deleteBtn.addEventListener("click", () => {
+-      if (deleteBtn.textContent === "Delete") {
+-        deleteBtn.textContent = "Confirm?";
++      if (deleteBtn.textContent === "삭제") {
++        deleteBtn.textContent = "삭제할까요?";
+         const timer = setTimeout(() => {
+-          deleteBtn.textContent = "Delete";
++          deleteBtn.textContent = "삭제";
+         }, 3000);
+         deleteBtn.dataset.timer = timer.toString();
+       } else {
+diff --git a/src/ui/menus/MainMenu.ts b/src/ui/menus/MainMenu.ts
+index cd603e5..cb056c3 100644
+--- a/src/ui/menus/MainMenu.ts
++++ b/src/ui/menus/MainMenu.ts
+@@ -20,13 +20,13 @@ export class MainMenu {
+     title.textContent = "Kinema";
+     this.root.appendChild(title);
+ 
+-    const playBtn = this.createButton("Play", this.options.onPlay);
++    const playBtn = this.createButton("플레이", this.options.onPlay);
+     playBtn.classList.add("menu-button-primary");
+-    const levelSelectBtn = this.createButton("Level Select", this.options.onLevelSelect);
+-    const createLevelBtn = this.createButton("Create Level", this.options.onCreateLevel);
+-    const settingsBtn = this.createButton("Settings", this.options.onSettings);
+-    const helpBtn = this.createButton("Help", this.options.onHelp);
+-    const quitBtn = this.createButton("Quit", this.options.onQuit);
++    const levelSelectBtn = this.createButton("레벨 선택", this.options.onLevelSelect);
++    const createLevelBtn = this.createButton("레벨 만들기", this.options.onCreateLevel);
++    const settingsBtn = this.createButton("설정", this.options.onSettings);
++    const helpBtn = this.createButton("도움말", this.options.onHelp);
++    const quitBtn = this.createButton("종료", this.options.onQuit);
+ 
+     this.root.appendChild(playBtn);
+     this.root.appendChild(levelSelectBtn);
+diff --git a/src/ui/menus/PauseMenu.ts b/src/ui/menus/PauseMenu.ts
+index ebdb136..f767a06 100644
+--- a/src/ui/menus/PauseMenu.ts
++++ b/src/ui/menus/PauseMenu.ts
+@@ -15,14 +15,14 @@ export class PauseMenu {
+ 
+     const title = document.createElement("h1");
+     title.className = "menu-title";
+-    title.textContent = "Paused";
++    title.textContent = "일시 정지";
+     this.root.appendChild(title);
+ 
+-    const resumeBtn = this.createButton("Resume", this.options.onResume);
++    const resumeBtn = this.createButton("계속하기", this.options.onResume);
+     resumeBtn.classList.add("menu-button-primary");
+-    const settingsBtn = this.createButton("Settings", this.options.onSettings);
+-    const helpBtn = this.createButton("Help", this.options.onHelp);
+-    const mainMenuBtn = this.createButton("Main Menu", this.options.onMainMenu);
++    const settingsBtn = this.createButton("설정", this.options.onSettings);
++    const helpBtn = this.createButton("도움말", this.options.onHelp);
++    const mainMenuBtn = this.createButton("메인 메뉴", this.options.onMainMenu);
+ 
+     this.root.appendChild(resumeBtn);
+     this.root.appendChild(settingsBtn);
+diff --git a/src/ui/menus/SettingsMenu.ts b/src/ui/menus/SettingsMenu.ts
+index feea34f..7213f17 100644
+--- a/src/ui/menus/SettingsMenu.ts
++++ b/src/ui/menus/SettingsMenu.ts
+@@ -29,16 +29,16 @@ export class SettingsMenu {
+ 
+     const title = document.createElement("h1");
+     title.className = "menu-title";
+-    title.textContent = "Settings";
++    title.textContent = "설정";
+     this.root.appendChild(title);
+ 
+     const tabs = document.createElement("div");
+     tabs.className = "menu-tabs";
+     this.root.appendChild(tabs);
+ 
+-    const controlsTab = this.createTab("Controls", () => this.showSection("controls"));
+-    const graphicsTab = this.createTab("Graphics", () => this.showSection("graphics"));
+-    const audioTab = this.createTab("Audio", () => this.showSection("audio"));
++    const controlsTab = this.createTab("조작", () => this.showSection("controls"));
++    const graphicsTab = this.createTab("그래픽", () => this.showSection("graphics"));
++    const audioTab = this.createTab("소리", () => this.showSection("audio"));
+     tabs.appendChild(controlsTab);
+     tabs.appendChild(graphicsTab);
+     tabs.appendChild(audioTab);
+@@ -59,7 +59,7 @@ export class SettingsMenu {
+ 
+     const backBtn = document.createElement("button");
+     backBtn.className = "menu-button";
+-    backBtn.textContent = "Back";
++    backBtn.textContent = "뒤로";
+     backBtn.addEventListener("click", () => this.options.onBack());
+     this.root.appendChild(backBtn);
+ 
+@@ -83,28 +83,28 @@ export class SettingsMenu {
+     const { settings, inputManager, camera, renderer } = this.options;
+ 
+     this.controlsSection.appendChild(
+-      this.createSlider("Mouse sensitivity", settings.value.mouseSensitivity, 0.0005, 0.008, 0.0001, (value) => {
++      this.createSlider("마우스 감도", settings.value.mouseSensitivity, 0.0005, 0.008, 0.0001, (value) => {
+         const s = settings.update({ mouseSensitivity: value });
+         camera.setMouseSensitivity(s.mouseSensitivity);
+       }),
+     );
+ 
+     this.controlsSection.appendChild(
+-      this.createToggle("Invert Y", settings.value.invertY, (value) => {
++      this.createToggle("상하 반전", settings.value.invertY, (value) => {
+         const s = settings.update({ invertY: value });
+         camera.setInvertY(s.invertY);
+       }),
+     );
+ 
+     this.controlsSection.appendChild(
+-      this.createToggle("Raw mouse input", settings.value.rawMouseInput, (value) => {
++      this.createToggle("원시 마우스 입력", settings.value.rawMouseInput, (value) => {
+         const s = settings.update({ rawMouseInput: value });
+         inputManager.setRawMouseInput(s.rawMouseInput);
+       }),
+     );
+ 
+     this.controlsSection.appendChild(
+-      this.createSlider("Camera FOV", settings.value.cameraFov, 60, 75, 1, (value) => {
++      this.createSlider("카메라 시야각", settings.value.cameraFov, 60, 75, 1, (value) => {
+         const s = settings.update({ cameraFov: value });
+         renderer.camera.fov = s.cameraFov;
+         camera.setBaseFov(s.cameraFov);
+@@ -113,14 +113,14 @@ export class SettingsMenu {
+     );
+ 
+     this.controlsSection.appendChild(
+-      this.createSlider("Gamepad deadzone", settings.value.gamepadDeadzone, 0, 0.4, 0.01, (value) => {
++      this.createSlider("게임패드 데드존", settings.value.gamepadDeadzone, 0, 0.4, 0.01, (value) => {
+         const s = settings.update({ gamepadDeadzone: value });
+         inputManager.setGamepadTuning(s.gamepadDeadzone, s.gamepadCurve);
+       }),
+     );
+ 
+     this.controlsSection.appendChild(
+-      this.createSlider("Gamepad curve", settings.value.gamepadCurve, 0.6, 3.0, 0.1, (value) => {
++      this.createSlider("게임패드 반응 곡선", settings.value.gamepadCurve, 0.6, 3.0, 0.1, (value) => {
+         const s = settings.update({ gamepadCurve: value });
+         inputManager.setGamepadTuning(s.gamepadDeadzone, s.gamepadCurve);
+       }),
+@@ -129,7 +129,7 @@ export class SettingsMenu {
+     // Touch controls toggle — only visible on touch-capable devices
+     if (inputManager.supportsTouchControls) {
+       this.controlsSection.appendChild(
+-        this.createToggle("Touch controls", inputManager.isTouchActive, (value) => {
++        this.createToggle("터치 조작", inputManager.isTouchActive, (value) => {
+           inputManager.setTouchControlsEnabled(value);
+         }),
+       );
+@@ -141,11 +141,11 @@ export class SettingsMenu {
+     const flags = renderer.getDebugFlags();
+ 
+     // --- Profile & Resolution ---
+-    this.graphicsSection.appendChild(this.createSectionHeader("Profile & Resolution"));
++    this.graphicsSection.appendChild(this.createSectionHeader("프로필과 해상도"));
+ 
+     this.graphicsSection.appendChild(
+       this.createSelect(
+-        "Graphics profile",
++        "그래픽 프로필",
+         settings.value.graphicsProfile,
+         ["performance", "balanced", "cinematic"],
+         (value) => {
+@@ -155,7 +155,7 @@ export class SettingsMenu {
+     );
+ 
+     this.graphicsSection.appendChild(
+-      this.createSelect("AA mode", settings.value.aaMode, ["smaa", "fxaa", "none"], (value) => {
++      this.createSelect("안티앨리어싱", settings.value.aaMode, ["smaa", "fxaa", "none"], (value) => {
+         const mode = value as AntiAliasingMode;
+         settings.update({ aaMode: mode });
+         eventBus.emit("debug:aaMode", { mode });
+@@ -163,24 +163,24 @@ export class SettingsMenu {
+     );
+ 
+     this.graphicsSection.appendChild(
+-      this.createSlider("Resolution scale", settings.value.resolutionScale, 0.5, 1, 0.05, (value) => {
++      this.createSlider("해상도 배율", settings.value.resolutionScale, 0.5, 1, 0.05, (value) => {
+         const s = settings.update({ resolutionScale: value });
+         renderer.setResolutionScale(s.resolutionScale);
+       }),
+     );
+ 
+     // --- Lighting & Shadows ---
+-    this.graphicsSection.appendChild(this.createSectionHeader("Lighting & Shadows"));
++    this.graphicsSection.appendChild(this.createSectionHeader("조명과 그림자"));
+ 
+     this.graphicsSection.appendChild(
+-      this.createToggle("Shadows", settings.value.shadowsEnabled, (value) => {
++      this.createToggle("그림자", settings.value.shadowsEnabled, (value) => {
+         settings.update({ shadowsEnabled: value });
+         eventBus.emit("debug:shadows", value);
+       }),
+     );
+     this.graphicsSection.appendChild(
+       this.createSelect(
+-        "Shadow quality",
++        "그림자 품질",
+         settings.value.shadowQuality,
+         ["auto", "performance", "balanced", "cinematic"],
+         (value) => {
+@@ -191,17 +191,17 @@ export class SettingsMenu {
+       ),
+     );
+     this.graphicsSection.appendChild(
+-      this.createSlider("Environment rotation", settings.value.envRotationDegrees, -180, 180, 1, (value) => {
++      this.createSlider("환경 회전", settings.value.envRotationDegrees, -180, 180, 1, (value) => {
+         const s = settings.update({ envRotationDegrees: value });
+         eventBus.emit("debug:environmentRotation", s.envRotationDegrees);
+       }),
+     );
+ 
+     // --- Post Effects ---
+-    this.graphicsSection.appendChild(this.createSectionHeader("Post Effects"));
++    this.graphicsSection.appendChild(this.createSectionHeader("후처리 효과"));
+ 
+     this.graphicsSection.appendChild(
+-      this.createToggle("Post-processing", flags.postProcessingEnabled, (value) => {
++      this.createToggle("후처리", flags.postProcessingEnabled, (value) => {
+         eventBus.emit("debug:postProcessing", value);
+       }),
+     );
+@@ -216,24 +216,24 @@ export class SettingsMenu {
+       }),
+     );
+     this.graphicsSection.appendChild(
+-      this.createToggle("Bloom", flags.bloomEnabled, (value) => {
++      this.createToggle("빛 번짐", flags.bloomEnabled, (value) => {
+         eventBus.emit("debug:bloomEnabled", value);
+       }),
+     );
+     this.graphicsSection.appendChild(
+-      this.createToggle("CAS sharpening", settings.value.casEnabled, (value) => {
++      this.createToggle("CAS 선명화", settings.value.casEnabled, (value) => {
+         const s = settings.update({ casEnabled: value });
+         eventBus.emit("debug:casEnabled", s.casEnabled);
+       }),
+     );
+     this.graphicsSection.appendChild(
+-      this.createSlider("CAS strength", settings.value.casStrength, 0, 1, 0.05, (value) => {
++      this.createSlider("CAS 강도", settings.value.casStrength, 0, 1, 0.05, (value) => {
+         const s = settings.update({ casStrength: value });
+         eventBus.emit("debug:casStrength", s.casStrength);
+       }),
+     );
+     this.graphicsSection.appendChild(
+-      this.createToggle("Vignette", flags.vignetteEnabled, (value) => {
++      this.createToggle("비네트", flags.vignetteEnabled, (value) => {
+         eventBus.emit("debug:vignetteEnabled", value);
+       }),
+     );
+@@ -244,7 +244,7 @@ export class SettingsMenu {
+     );
+ 
+     // --- Developer ---
+-    this.graphicsSection.appendChild(this.createSectionHeader("Developer"));
++    this.graphicsSection.appendChild(this.createSectionHeader("개발자"));
+ 
+     this.graphicsSection.appendChild(
+       this.createDebugPanelButton(() => {
+@@ -256,21 +256,21 @@ export class SettingsMenu {
+   private buildAudioSection(): void {
+     const { settings, audioManager, eventBus } = this.options;
+     this.audioSection.appendChild(
+-      this.createSlider("Master volume", settings.value.masterVolume, 0, 1, 0.01, (value) => {
++      this.createSlider("전체 음량", settings.value.masterVolume, 0, 1, 0.01, (value) => {
+         const s = settings.update({ masterVolume: value });
+         audioManager.setMasterVolume(s.masterVolume);
+         eventBus.emit("audio:masterVolume", s.masterVolume);
+       }),
+     );
+     this.audioSection.appendChild(
+-      this.createSlider("Music volume", settings.value.musicVolume, 0, 1, 0.01, (value) => {
++      this.createSlider("음악 음량", settings.value.musicVolume, 0, 1, 0.01, (value) => {
+         const s = settings.update({ musicVolume: value });
+         audioManager.setMusicVolume(s.musicVolume);
+         eventBus.emit("audio:musicVolume", s.musicVolume);
+       }),
+     );
+     this.audioSection.appendChild(
+-      this.createSlider("SFX volume", settings.value.sfxVolume, 0, 1, 0.01, (value) => {
++      this.createSlider("효과음 음량", settings.value.sfxVolume, 0, 1, 0.01, (value) => {
+         const s = settings.update({ sfxVolume: value });
+         audioManager.setSfxVolume(s.sfxVolume);
+         eventBus.emit("audio:sfxVolume", s.sfxVolume);
+@@ -359,7 +359,7 @@ export class SettingsMenu {
+     wrapper.className = "menu-field";
+     const btn = document.createElement("button");
+     btn.className = "menu-button";
+-    btn.textContent = "Toggle Debug Panel";
++    btn.textContent = "디버그 패널 전환";
+     btn.addEventListener("click", onClick);
+     wrapper.appendChild(btn);
+     return wrapper;
+diff --git a/vite.config.ts b/vite.config.ts
+index 31f188b..8380730 100644
+--- a/vite.config.ts
++++ b/vite.config.ts
+@@ -1,3 +1,4 @@
++import { viteSingleFile } from 'vite-plugin-singlefile';
+ import { defineConfig } from 'vitest/config';
+ import { resolve, dirname } from 'node:path';
+ import { fileURLToPath } from 'node:url';
+@@ -13,7 +14,8 @@ const rapierPkg = JSON.parse(readFileSync(resolve(rapierPkgDir, 'package.json'),
+ const rapierESM = resolve(rapierPkgDir, rapierPkg.module ?? rapierPkg.main);
+ 
+ export default defineConfig({
+-  plugins: [],
++  base: '/Kinema/',
++  plugins: [viteSingleFile()],
+   server: {
+     strictPort: true,
+   },
+@@ -56,24 +58,6 @@ export default defineConfig({
+     // by the post-processing pipeline — Rolldown keeps them as separate async
+     // chunks automatically, so the negative lookahead in the vendor-three
+     // regex excludes them from the vendor bundle.
+-    rolldownOptions: {
+-      output: {
+-        codeSplitting: {
+-          groups: [
+-            {
+-              name: 'vendor-three',
+-              test: /node_modules[\\/]three[\\/](?!addons[\\/]tsl[\\/]display[\\/])/,
+-              priority: 10,
+-            },
+-            {
+-              name: 'vendor-rapier',
+-              test: /node_modules[\\/]@dimforge[\\/]rapier3d-compat/,
+-              priority: 10,
+-            },
+-          ],
+-        },
+-      },
+-    },
+     chunkSizeWarningLimit: 600,
+   },
+ });
