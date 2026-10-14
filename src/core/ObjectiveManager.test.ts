@@ -24,7 +24,7 @@ describe("ObjectiveManager", () => {
     expect(setEvents.at(-1)).toEqual({ id: "b", text: "Second objective" });
 
     manager.complete("b");
-    expect(setEvents.at(-1)).toEqual({ id: "none", text: "All objectives complete" });
+    expect(setEvents.at(-1)).toEqual({ id: "none", text: "모든 목표 달성" });
   });
 
   it("reports completion state by id", () => {
