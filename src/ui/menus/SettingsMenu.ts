@@ -29,16 +29,16 @@ export class SettingsMenu {
 
     const title = document.createElement("h1");
     title.className = "menu-title";
-    title.textContent = "Settings";
+    title.textContent = "설정";
     this.root.appendChild(title);
 
     const tabs = document.createElement("div");
     tabs.className = "menu-tabs";
     this.root.appendChild(tabs);
 
-    const controlsTab = this.createTab("Controls", () => this.showSection("controls"));
-    const graphicsTab = this.createTab("Graphics", () => this.showSection("graphics"));
-    const audioTab = this.createTab("Audio", () => this.showSection("audio"));
+    const controlsTab = this.createTab("조작", () => this.showSection("controls"));
+    const graphicsTab = this.createTab("그래픽", () => this.showSection("graphics"));
+    const audioTab = this.createTab("소리", () => this.showSection("audio"));
     tabs.appendChild(controlsTab);
     tabs.appendChild(graphicsTab);
     tabs.appendChild(audioTab);
@@ -59,7 +59,7 @@ export class SettingsMenu {
 
     const backBtn = document.createElement("button");
     backBtn.className = "menu-button";
-    backBtn.textContent = "Back";
+    backBtn.textContent = "뒤로";
     backBtn.addEventListener("click", () => this.options.onBack());
     this.root.appendChild(backBtn);
 
@@ -83,28 +83,28 @@ export class SettingsMenu {
     const { settings, inputManager, camera, renderer } = this.options;
 
     this.controlsSection.appendChild(
-      this.createSlider("Mouse sensitivity", settings.value.mouseSensitivity, 0.0005, 0.008, 0.0001, (value) => {
+      this.createSlider("마우스 감도", settings.value.mouseSensitivity, 0.0005, 0.008, 0.0001, (value) => {
         const s = settings.update({ mouseSensitivity: value });
         camera.setMouseSensitivity(s.mouseSensitivity);
       }),
     );
 
     this.controlsSection.appendChild(
-      this.createToggle("Invert Y", settings.value.invertY, (value) => {
+      this.createToggle("상하 반전", settings.value.invertY, (value) => {
         const s = settings.update({ invertY: value });
         camera.setInvertY(s.invertY);
       }),
     );
 
     this.controlsSection.appendChild(
-      this.createToggle("Raw mouse input", settings.value.rawMouseInput, (value) => {
+      this.createToggle("원시 마우스 입력", settings.value.rawMouseInput, (value) => {
         const s = settings.update({ rawMouseInput: value });
         inputManager.setRawMouseInput(s.rawMouseInput);
       }),
     );
 
     this.controlsSection.appendChild(
-      this.createSlider("Camera FOV", settings.value.cameraFov, 60, 75, 1, (value) => {
+      this.createSlider("카메라 시야각", settings.value.cameraFov, 60, 75, 1, (value) => {
         const s = settings.update({ cameraFov: value });
         renderer.camera.fov = s.cameraFov;
         camera.setBaseFov(s.cameraFov);
@@ -113,14 +113,14 @@ export class SettingsMenu {
     );
 
     this.controlsSection.appendChild(
-      this.createSlider("Gamepad deadzone", settings.value.gamepadDeadzone, 0, 0.4, 0.01, (value) => {
+      this.createSlider("게임패드 데드존", settings.value.gamepadDeadzone, 0, 0.4, 0.01, (value) => {
         const s = settings.update({ gamepadDeadzone: value });
         inputManager.setGamepadTuning(s.gamepadDeadzone, s.gamepadCurve);
       }),
     );
 
     this.controlsSection.appendChild(
-      this.createSlider("Gamepad curve", settings.value.gamepadCurve, 0.6, 3.0, 0.1, (value) => {
+      this.createSlider("게임패드 반응 곡선", settings.value.gamepadCurve, 0.6, 3.0, 0.1, (value) => {
         const s = settings.update({ gamepadCurve: value });
         inputManager.setGamepadTuning(s.gamepadDeadzone, s.gamepadCurve);
       }),
@@ -129,7 +129,7 @@ export class SettingsMenu {
     // Touch controls toggle — only visible on touch-capable devices
     if (inputManager.supportsTouchControls) {
       this.controlsSection.appendChild(
-        this.createToggle("Touch controls", inputManager.isTouchActive, (value) => {
+        this.createToggle("터치 조작", inputManager.isTouchActive, (value) => {
           inputManager.setTouchControlsEnabled(value);
         }),
       );
@@ -141,11 +141,11 @@ export class SettingsMenu {
     const flags = renderer.getDebugFlags();
 
     // --- Profile & Resolution ---
-    this.graphicsSection.appendChild(this.createSectionHeader("Profile & Resolution"));
+    this.graphicsSection.appendChild(this.createSectionHeader("프로필과 해상도"));
 
     this.graphicsSection.appendChild(
       this.createSelect(
-        "Graphics profile",
+        "그래픽 프로필",
         settings.value.graphicsProfile,
         ["performance", "balanced", "cinematic"],
         (value) => {
@@ -155,7 +155,7 @@ export class SettingsMenu {
     );
 
     this.graphicsSection.appendChild(
-      this.createSelect("AA mode", settings.value.aaMode, ["smaa", "fxaa", "none"], (value) => {
+      this.createSelect("안티앨리어싱", settings.value.aaMode, ["smaa", "fxaa", "none"], (value) => {
         const mode = value as AntiAliasingMode;
         settings.update({ aaMode: mode });
         eventBus.emit("debug:aaMode", { mode });
@@ -163,24 +163,24 @@ export class SettingsMenu {
     );
 
     this.graphicsSection.appendChild(
-      this.createSlider("Resolution scale", settings.value.resolutionScale, 0.5, 1, 0.05, (value) => {
+      this.createSlider("해상도 배율", settings.value.resolutionScale, 0.5, 1, 0.05, (value) => {
         const s = settings.update({ resolutionScale: value });
         renderer.setResolutionScale(s.resolutionScale);
       }),
     );
 
     // --- Lighting & Shadows ---
-    this.graphicsSection.appendChild(this.createSectionHeader("Lighting & Shadows"));
+    this.graphicsSection.appendChild(this.createSectionHeader("조명과 그림자"));
 
     this.graphicsSection.appendChild(
-      this.createToggle("Shadows", settings.value.shadowsEnabled, (value) => {
+      this.createToggle("그림자", settings.value.shadowsEnabled, (value) => {
         settings.update({ shadowsEnabled: value });
         eventBus.emit("debug:shadows", value);
       }),
     );
     this.graphicsSection.appendChild(
       this.createSelect(
-        "Shadow quality",
+        "그림자 품질",
         settings.value.shadowQuality,
         ["auto", "performance", "balanced", "cinematic"],
         (value) => {
@@ -191,17 +191,17 @@ export class SettingsMenu {
       ),
     );
     this.graphicsSection.appendChild(
-      this.createSlider("Environment rotation", settings.value.envRotationDegrees, -180, 180, 1, (value) => {
+      this.createSlider("환경 회전", settings.value.envRotationDegrees, -180, 180, 1, (value) => {
         const s = settings.update({ envRotationDegrees: value });
         eventBus.emit("debug:environmentRotation", s.envRotationDegrees);
       }),
     );
 
     // --- Post Effects ---
-    this.graphicsSection.appendChild(this.createSectionHeader("Post Effects"));
+    this.graphicsSection.appendChild(this.createSectionHeader("후처리 효과"));
 
     this.graphicsSection.appendChild(
-      this.createToggle("Post-processing", flags.postProcessingEnabled, (value) => {
+      this.createToggle("후처리", flags.postProcessingEnabled, (value) => {
         eventBus.emit("debug:postProcessing", value);
       }),
     );
@@ -216,24 +216,24 @@ export class SettingsMenu {
       }),
     );
     this.graphicsSection.appendChild(
-      this.createToggle("Bloom", flags.bloomEnabled, (value) => {
+      this.createToggle("빛 번짐", flags.bloomEnabled, (value) => {
         eventBus.emit("debug:bloomEnabled", value);
       }),
     );
     this.graphicsSection.appendChild(
-      this.createToggle("CAS sharpening", settings.value.casEnabled, (value) => {
+      this.createToggle("CAS 선명화", settings.value.casEnabled, (value) => {
         const s = settings.update({ casEnabled: value });
         eventBus.emit("debug:casEnabled", s.casEnabled);
       }),
     );
     this.graphicsSection.appendChild(
-      this.createSlider("CAS strength", settings.value.casStrength, 0, 1, 0.05, (value) => {
+      this.createSlider("CAS 강도", settings.value.casStrength, 0, 1, 0.05, (value) => {
         const s = settings.update({ casStrength: value });
         eventBus.emit("debug:casStrength", s.casStrength);
       }),
     );
     this.graphicsSection.appendChild(
-      this.createToggle("Vignette", flags.vignetteEnabled, (value) => {
+      this.createToggle("비네트", flags.vignetteEnabled, (value) => {
         eventBus.emit("debug:vignetteEnabled", value);
       }),
     );
@@ -244,7 +244,7 @@ export class SettingsMenu {
     );
 
     // --- Developer ---
-    this.graphicsSection.appendChild(this.createSectionHeader("Developer"));
+    this.graphicsSection.appendChild(this.createSectionHeader("개발자"));
 
     this.graphicsSection.appendChild(
       this.createDebugPanelButton(() => {
@@ -256,21 +256,21 @@ export class SettingsMenu {
   private buildAudioSection(): void {
     const { settings, audioManager, eventBus } = this.options;
     this.audioSection.appendChild(
-      this.createSlider("Master volume", settings.value.masterVolume, 0, 1, 0.01, (value) => {
+      this.createSlider("전체 음량", settings.value.masterVolume, 0, 1, 0.01, (value) => {
         const s = settings.update({ masterVolume: value });
         audioManager.setMasterVolume(s.masterVolume);
         eventBus.emit("audio:masterVolume", s.masterVolume);
       }),
     );
     this.audioSection.appendChild(
-      this.createSlider("Music volume", settings.value.musicVolume, 0, 1, 0.01, (value) => {
+      this.createSlider("음악 음량", settings.value.musicVolume, 0, 1, 0.01, (value) => {
         const s = settings.update({ musicVolume: value });
         audioManager.setMusicVolume(s.musicVolume);
         eventBus.emit("audio:musicVolume", s.musicVolume);
       }),
     );
     this.audioSection.appendChild(
-      this.createSlider("SFX volume", settings.value.sfxVolume, 0, 1, 0.01, (value) => {
+      this.createSlider("효과음 음량", settings.value.sfxVolume, 0, 1, 0.01, (value) => {
         const s = settings.update({ sfxVolume: value });
         audioManager.setSfxVolume(s.sfxVolume);
         eventBus.emit("audio:sfxVolume", s.sfxVolume);
@@ -359,7 +359,7 @@ export class SettingsMenu {
     wrapper.className = "menu-field";
     const btn = document.createElement("button");
     btn.className = "menu-button";
-    btn.textContent = "Toggle Debug Panel";
+    btn.textContent = "디버그 패널 전환";
     btn.addEventListener("click", onClick);
     wrapper.appendChild(btn);
     return wrapper;
