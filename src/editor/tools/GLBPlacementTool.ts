@@ -58,7 +58,7 @@ export class GLBPlacementTool implements EditorTool {
     const objectUrl = URL.createObjectURL(file);
     try {
       const gltf = await this.levelManager.getAssetLoader().load(objectUrl);
-      const assetPath = `/assets/models/${file.name}`;
+      const assetPath = `/Kinema/public/assets/models/${file.name}`;
 
       // Register the loaded GLTF under the canonical asset path so it survives
       // play-test restore (spawnSerializedObject calls load(assetPath)).
